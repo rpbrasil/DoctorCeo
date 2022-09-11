@@ -261,12 +261,12 @@ namespace DoctorCeo
             }
 
             // Required to serve files with no extension in the .well-known folder
-            var options = new StaticFileOptions()
-            {
-                ServeUnknownFileTypes = true,
-            };
+            // var options = new StaticFileOptions()
+            // {
+            //     ServeUnknownFileTypes = true,
+            // };
 
-            app.UseStaticFiles(options);
+            // app.UseStaticFiles(options);
 
             app.UseRouting();
             app.UseAuthentication();
