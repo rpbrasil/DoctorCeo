@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RRr2Nm7F6ac2JRkho+8xyfc3v1DtqNoquFPEai5PnjBzj7GtB9RayFPuQ7aASqxee+0RKy7mPZjVbf0eU31spw==",
+  "dgSpecHash": "nzgVBftLJkT2woA58sMBWIjXMK/QAm2cdGoYD0D/ZjHN9rFJdaLBgYWQ+0WKunffAwguA8y0ZGcoOqOityL6Uw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rpbrasil\\Local_Repos\\ASPNETOAuthLinkedIn\\ASPNETOAuthLinkedIn.csproj",
+  "projectFilePath": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\DoctorCeo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rpbrasil\\.nuget\\packages\\aspnet.security.oauth.github\\6.0.11\\aspnet.security.oauth.github.6.0.11.nupkg.sha512",
     "C:\\Users\\rpbrasil\\.nuget\\packages\\aspnet.security.oauth.linkedin\\6.0.11\\aspnet.security.oauth.linkedin.6.0.11.nupkg.sha512",
