@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'doctorceo'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2005726A157240C78CB1826CFA0D3B25 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5E538D4A907E407D87575CC29EE81A8F }}
           package: .
