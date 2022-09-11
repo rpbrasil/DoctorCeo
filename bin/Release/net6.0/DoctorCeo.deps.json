@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "ASPNETOAuthLinkedIn/1.0.0": {
+      "DoctorCeo/1.0.0": {
         "dependencies": {
           "AspNet.Security.OAuth.GitHub": "6.0.11",
           "AspNet.Security.OAuth.LinkedIn": "6.0.11",
@@ -21,7 +21,7 @@
           "Microsoft.Net.Http.Headers": "2.2.8"
         },
         "runtime": {
-          "ASPNETOAuthLinkedIn.dll": {}
+          "DoctorCeo.dll": {}
         }
       },
       "AspNet.Security.OAuth.GitHub/6.0.11": {
@@ -358,7 +358,7 @@
     }
   },
   "libraries": {
-    "ASPNETOAuthLinkedIn/1.0.0": {
+    "DoctorCeo/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
