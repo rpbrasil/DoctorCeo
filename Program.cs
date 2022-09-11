@@ -2,7 +2,7 @@ using Microsoft.AspNetCore;
 
 namespace DoctorCeo
 {
-    public static class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
