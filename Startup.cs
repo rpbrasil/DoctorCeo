@@ -8,8 +8,7 @@ using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Authentication.OAuth;
-using Microsoft.AspNetCore.Authentication.Twitter;
-using AspNet.Security.OAuth.LinkedIn;
+using Microsoft.AspNetCore.Authentication.Twitter;using AspNet.Security.OAuth.LinkedIn;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Options;
 
@@ -93,8 +92,6 @@ namespace DoctorCeo
                 {
                     o.ConsumerKey = Configuration["Twitter:ClientId"];
                     o.ConsumerSecret = Configuration["Twitter:ClientSecret"];
-                    // http://stackoverflow.com/questions/22627083/can-we-get-email-id-from-twitter-oauth-api/32852370#32852370
-                    // http://stackoverflow.com/questions/36330675/get-users-email-from-twitter-api-for-external-login-authentication-asp-net-mvc?lq=1
                     o.RetrieveUserDetails = true;
                     o.SaveTokens = true;
                     o.ClaimActions.MapJsonKey("urn:twitter:profilepicture", "profile_image_url", ClaimTypes.Uri);
@@ -388,6 +385,35 @@ namespace DoctorCeo
                     }
                     // https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension
                     else if (string.Equals(FacebookDefaults.AuthenticationScheme, currentAuthType))
+                    {
+                        var options = await GetOAuthOptionsAsync(context, currentAuthType);
+
+                        var accessToken = authProperties.GetTokenValue("access_token");
+
+                        var query = new QueryBuilder()
+                        {
+                            { "grant_type", "fb_exchange_token" },
+                            { "Client_id", options.ClientId },
+                            { "Client_secret", options.ClientSecret },
+                            { "fb_exchange_token", accessToken },
+                        }.ToQueryString();
+
+                        var refreshResponse = await options.Backchannel.GetStringAsync(options.TokenEndpoint + query);
+                        using (var payload = JsonDocument.Parse(refreshResponse))
+                        {
+                            authProperties.UpdateTokenValue("access_token", payload.RootElement.GetString("access_token"));
+                            if (payload.RootElement.TryGetProperty("expires_in", out var property) && property.TryGetInt32(out var seconds))
+                            {
+                                var expiresAt = DateTimeOffset.UtcNow + TimeSpan.FromSeconds(seconds);
+                                authProperties.UpdateTokenValue("expires_at", expiresAt.ToString("o", CultureInfo.InvariantCulture));
+                            }
+                            await context.SignInAsync(user, authProperties);
+
+                            await PrintRefreshedTokensAsync(response, payload, authProperties);
+                        }
+                        return;
+                    }
+                    else if (string.Equals(TwitterDefaults.AuthenticationScheme, currentAuthType))
                     {
                         var options = await GetOAuthOptionsAsync(context, currentAuthType);
 
