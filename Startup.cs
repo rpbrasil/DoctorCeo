@@ -519,6 +519,10 @@ namespace DoctorCeo
             {
                 return Task.FromResult<OAuthOptions>(context.RequestServices.GetRequiredService<IOptionsMonitor<LinkedInAuthenticationOptions>>().Get(currentAuthType));
             }
+            else if (string.Equals(TwitterDefaults.AuthenticationScheme, currentAuthType))
+            {
+                return Task.FromResult<OAuthOptions>(context.RequestServices.GetRequiredService<IOptionsMonitor<TwitterOptions>>().Get(currentAuthType));
+            }
             else if (string.Equals("IdentityServer", currentAuthType))
             {
                 return Task.FromResult<OAuthOptions>(context.RequestServices.GetRequiredService<IOptionsMonitor<OAuthOptions>>().Get(currentAuthType));
