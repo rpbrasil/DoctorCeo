@@ -54,9 +54,9 @@ namespace DoctorCeo
                     // your scopes may vary, see https://developer.linkedin.com/docs/oauth2#scopes
                     o.Scope.Add("r_liteprofile");
                     o.Scope.Add("r_emailaddress");
-                    o.Scope.Add("r_organization_social");
-                    o.Scope.Add("w_organization_social");
-                    o.Scope.Add("rw_organization_admin");
+                    // o.Scope.Add("r_organization_social");
+                    // o.Scope.Add("w_organization_social");
+                    // o.Scope.Add("rw_organization_admin");
                     o.SaveTokens = true; //<-- this is the important line if you wat to use the tokens
                 })
                 // Facebook
