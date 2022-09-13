@@ -39,3 +39,4 @@ C:\Users\rpbrasil\Local_Repos\DoctorCeo\bin\Debug\net6.0\AspNet.Security.OAuth.T
 C:\Users\rpbrasil\Local_Repos\DoctorCeo\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\rpbrasil\Local_Repos\DoctorCeo\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\rpbrasil\Local_Repos\DoctorCeo\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\rpbrasil\Local_Repos\DoctorCeo\bin\Debug\net6.0\AspNet.Security.OAuth.Amazon.dll

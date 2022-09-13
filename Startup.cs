@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using AspNet.Security.OAuth.LinkedIn;
 using AspNet.Security.OAuth.Twitter;
+using AspNet.Security.OAuth.Amazon;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Options;
 
@@ -95,6 +96,14 @@ namespace DoctorCeo
                 {
                     o.ClientId = Configuration["Twitter:ClientId"];
                     o.ClientSecret = Configuration["Twitter:ClientSecret"];
+                })
+                .AddAmazon(o =>
+                {
+                    o.ClientId = Configuration["Amazon:ClientId"];
+                    o.ClientSecret = Configuration["Amazon:ClientSecret"];
+                    // Optionally request the user's postal code, if needed
+                    o.Scope.Add("postal_code");
+                    o.Fields.Add("postal_code");
                 });
         }
         /* Azure AD app model v2 has restrictions that prevent the use of plain HTTP for redirect URLs.
@@ -540,6 +549,10 @@ namespace DoctorCeo
             else if (string.Equals(TwitterAuthenticationDefaults.AuthenticationScheme, currentAuthType))
             {
                 return Task.FromResult<OAuthOptions>(context.RequestServices.GetRequiredService<IOptionsMonitor<TwitterAuthenticationOptions>>().Get(currentAuthType));
+            }
+            else if (string.Equals(AmazonAuthenticationDefaults.AuthenticationScheme, currentAuthType))
+            {
+                return Task.FromResult<OAuthOptions>(context.RequestServices.GetRequiredService<IOptionsMonitor<AmazonAuthenticationOptions>>().Get(currentAuthType));
             }
             else if (string.Equals("IdentityServer", currentAuthType))
             {

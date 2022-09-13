@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "AspNet.Security.OAuth.Amazon/6.0.11": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/AspNet.Security.OAuth.Amazon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/AspNet.Security.OAuth.Amazon.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "AspNet.Security.OAuth.GitHub/6.0.11": {
         "type": "package",
         "compile": {
@@ -1778,6 +1794,20 @@
     }
   },
   "libraries": {
+    "AspNet.Security.OAuth.Amazon/6.0.11": {
+      "sha512": "B9JsvF0RsFv/PelwsDjOKbGCVp9usj3HG81hJraSLfSZ0OV0AQoyWTvt2dsuCvbukv22AI/Q9TzvQrPmQHSF5w==",
+      "type": "package",
+      "path": "aspnet.security.oauth.amazon/6.0.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "aspnet.security.oauth.amazon.6.0.11.nupkg.sha512",
+        "aspnet.security.oauth.amazon.nuspec",
+        "lib/net6.0/AspNet.Security.OAuth.Amazon.dll",
+        "lib/net6.0/AspNet.Security.OAuth.Amazon.xml"
+      ]
+    },
     "AspNet.Security.OAuth.GitHub/6.0.11": {
       "sha512": "5nTxgfRcvfOeFX/D/+toVQvKw16e7m1EnbVqpS0N0Pl36KGS9fVZrGCjnGePl08rkBgo+3N9HFJj/1eCw9kslw==",
       "type": "package",
@@ -5293,6 +5323,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "AspNet.Security.OAuth.Amazon >= 6.0.11",
       "AspNet.Security.OAuth.GitHub >= 6.0.11",
       "AspNet.Security.OAuth.LinkedIn >= 6.0.11",
       "AspNet.Security.OAuth.Twitter >= 6.0.11",
@@ -5346,6 +5377,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "AspNet.Security.OAuth.Amazon": {
+            "target": "Package",
+            "version": "[6.0.11, )"
+          },
           "AspNet.Security.OAuth.GitHub": {
             "target": "Package",
             "version": "[6.0.11, )"

@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "DoctorCeo/1.0.0": {
         "dependencies": {
+          "AspNet.Security.OAuth.Amazon": "6.0.11",
           "AspNet.Security.OAuth.GitHub": "6.0.11",
           "AspNet.Security.OAuth.LinkedIn": "6.0.11",
           "AspNet.Security.OAuth.Twitter": "6.0.11",
@@ -25,6 +26,14 @@
         },
         "runtime": {
           "DoctorCeo.dll": {}
+        }
+      },
+      "AspNet.Security.OAuth.Amazon/6.0.11": {
+        "runtime": {
+          "lib/net6.0/AspNet.Security.OAuth.Amazon.dll": {
+            "assemblyVersion": "6.0.11.0",
+            "fileVersion": "6.0.1122.45472"
+          }
         }
       },
       "AspNet.Security.OAuth.GitHub/6.0.11": {
@@ -822,6 +831,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AspNet.Security.OAuth.Amazon/6.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-B9JsvF0RsFv/PelwsDjOKbGCVp9usj3HG81hJraSLfSZ0OV0AQoyWTvt2dsuCvbukv22AI/Q9TzvQrPmQHSF5w==",
+      "path": "aspnet.security.oauth.amazon/6.0.11",
+      "hashPath": "aspnet.security.oauth.amazon.6.0.11.nupkg.sha512"
     },
     "AspNet.Security.OAuth.GitHub/6.0.11": {
       "type": "package",

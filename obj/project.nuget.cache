@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "90/5eQzN/nizIt/IOXY3Wfgsiodir+emHu0kB/FsVtcFgYzN4OZbHfmNBxCerAl4bLNoK1WzlfvfN60P1fmbJg==",
+  "dgSpecHash": "AB+aeqYGMuYlysjNeQZdOkHhtStm+fkUV75qyVjvOgZLiJ7fvpvQb5I+2zMqC+DnpuCCyjC8QJEVV60N3VZVFg==",
   "success": true,
   "projectFilePath": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\DoctorCeo.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\rpbrasil\\.nuget\\packages\\aspnet.security.oauth.amazon\\6.0.11\\aspnet.security.oauth.amazon.6.0.11.nupkg.sha512",
     "C:\\Users\\rpbrasil\\.nuget\\packages\\aspnet.security.oauth.github\\6.0.11\\aspnet.security.oauth.github.6.0.11.nupkg.sha512",
     "C:\\Users\\rpbrasil\\.nuget\\packages\\aspnet.security.oauth.linkedin\\6.0.11\\aspnet.security.oauth.linkedin.6.0.11.nupkg.sha512",
     "C:\\Users\\rpbrasil\\.nuget\\packages\\aspnet.security.oauth.twitter\\6.0.11\\aspnet.security.oauth.twitter.6.0.11.nupkg.sha512",
