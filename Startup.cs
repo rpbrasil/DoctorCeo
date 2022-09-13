@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Authentication.OAuth;
-//using Microsoft.AspNetCore.Authentication.Twitter;
 using AspNet.Security.OAuth.LinkedIn;
 using AspNet.Security.OAuth.Twitter;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -94,24 +93,8 @@ namespace DoctorCeo
                 // Twitter
                 .AddTwitter(o =>
                 {
-                    o.ConsumerKey = Configuration["Twitter:ClientId"];
-                    o.ConsumerSecret = Configuration["Twitter:ClientSecret"];
-                    o.RetrieveUserDetails = true;
-                    o.CallbackPath = new PathString("/signin-twitter");
-                    o.SaveTokens = true;
-                    o.ClaimActions.MapJsonKey("urn:twitter:profilepicture", "profile_image_url", ClaimTypes.Uri);
-                    // o.Events = new TwitterEvents()
-                    // {
-                    //     OnCreatingTicket = context =>
-                    //     {
-                    //         System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: UserId = {context.UserId}");
-                    //         System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: AccessToken = {context.AccessToken}");
-                    //         System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: AccessTokenSecret = {context.AccessTokenSecret}");
-                    //         System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: User = {context.User}");
-                    //         return Task.CompletedTask;
-                    //     },
-                    //     OnRemoteFailure = HandleOnRemoteFailure
-                    // };
+                    o.ClientId = Configuration["Twitter:ClientId"];
+                    o.ClientSecret = Configuration["Twitter:ClientSecret"];
                 });
         }
         /* Azure AD app model v2 has restrictions that prevent the use of plain HTTP for redirect URLs.
