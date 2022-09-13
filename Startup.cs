@@ -4,14 +4,12 @@ using System.Text.Encodings.Web;
 using System.Text;
 using System.Text.Json;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.AspNetCore.Mvc.Core;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Authentication.OAuth;
-using Microsoft.AspNetCore.Authentication.Twitter;
+//using Microsoft.AspNetCore.Authentication.Twitter;
 using AspNet.Security.OAuth.LinkedIn;
 using AspNet.Security.OAuth.Twitter;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -102,18 +100,18 @@ namespace DoctorCeo
                     o.CallbackPath = new PathString("/signin-twitter");
                     o.SaveTokens = true;
                     o.ClaimActions.MapJsonKey("urn:twitter:profilepicture", "profile_image_url", ClaimTypes.Uri);
-                    o.Events = new TwitterEvents()
-                    {
-                        OnCreatingTicket = context =>
-                        {
-                            System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: UserId = {context.UserId}");
-                            System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: AccessToken = {context.AccessToken}");
-                            System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: AccessTokenSecret = {context.AccessTokenSecret}");
-                            System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: User = {context.User}");
-                            return Task.CompletedTask;
-                        },
-                        OnRemoteFailure = HandleOnRemoteFailure
-                    };
+                    // o.Events = new TwitterEvents()
+                    // {
+                    //     OnCreatingTicket = context =>
+                    //     {
+                    //         System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: UserId = {context.UserId}");
+                    //         System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: AccessToken = {context.AccessToken}");
+                    //         System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: AccessTokenSecret = {context.AccessTokenSecret}");
+                    //         System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: User = {context.User}");
+                    //         return Task.CompletedTask;
+                    //     },
+                    //     OnRemoteFailure = HandleOnRemoteFailure
+                    // };
                 });
         }
         /* Azure AD app model v2 has restrictions that prevent the use of plain HTTP for redirect URLs.
@@ -267,6 +265,8 @@ namespace DoctorCeo
         {
             if (HostingEnvironment.IsDevelopment())
             {
+                // https obrigatório
+                // use no PowerShell - C:\Users\rpbrasil> dotnet dev-certs https --trust
                 app.UseDeveloperExceptionPage();
             }
 
@@ -279,8 +279,13 @@ namespace DoctorCeo
             app.UseHsts();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapDefaultControllerRoute();
+            });
             // Choose an authentication type
             app.Map("/signin", signinApp =>
             {
@@ -420,7 +425,7 @@ namespace DoctorCeo
                         }
                         return;
                     }
-                    else if (string.Equals(TwitterDefaults.AuthenticationScheme, currentAuthType))
+                    else if (string.Equals(TwitterAuthenticationDefaults.AuthenticationScheme, currentAuthType))
                     {
                         var options = await GetOAuthOptionsAsync(context, currentAuthType);
 

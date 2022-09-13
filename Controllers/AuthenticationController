@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using DoctorCeo.Extensions;
 
 
 namespace Controllers;
@@ -8,7 +9,7 @@ namespace Controllers;
 public class AuthenticationController : Controller
 {
     [HttpGet("~/signin")]
-    public async Task<IActionResult> SignIn() => View("SignIn", await Extensions.HttpContextExtensions.GetExternalProvidersAsync(HttpContext));
+    public async Task<IActionResult> SignIn() => View("SignIn", await HttpContextExtensions.GetExternalProvidersAsync(HttpContext));
 
     [HttpPost("~/signin")]
     public async Task<IActionResult> SignIn([FromForm] string provider)
@@ -20,7 +21,7 @@ public class AuthenticationController : Controller
             return BadRequest();
         }
 
-        if (!await Extensions.HttpContextExtensions.IsProviderSupportedAsync(HttpContext, provider))
+        if (!await HttpContextExtensions.IsProviderSupportedAsync(HttpContext, provider))
         {
             return BadRequest();
         }

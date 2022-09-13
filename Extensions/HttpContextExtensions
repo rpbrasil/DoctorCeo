@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication;
 
-namespace Extensions;
+namespace DoctorCeo.Extensions;
 
 public static class HttpContextExtensions
 {
