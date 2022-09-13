@@ -49,7 +49,6 @@ namespace DoctorCeo
                     o.LoginPath = new PathString("/signin");
                     o.LogoutPath = new PathString("/signout");
                 })
-                // Linkedin
                 .AddLinkedIn(o =>
                 {
                     o.ClientId = Configuration["LinkedIn:ClientId"];
@@ -62,7 +61,6 @@ namespace DoctorCeo
                     // o.Scope.Add("rw_organization_admin");
                     o.SaveTokens = true; //<-- this is the important line if you wat to use the tokens
                 })
-                // Facebook
                 .AddFacebook(o =>
                 {
                     o.AppId = Configuration["Facebook:ClientId"];
@@ -76,7 +74,6 @@ namespace DoctorCeo
                         OnRemoteFailure = HandleOnRemoteFailure
                     };
                 })
-                // Google
                 .AddGoogle(o =>
                 {
                     o.ClientId = Configuration["google:ClientId"];
@@ -91,11 +88,15 @@ namespace DoctorCeo
                     o.ClaimActions.MapJsonSubKey("urn:google:image", "image", "url");
                     o.ClaimActions.Remove(ClaimTypes.GivenName);
                 })
-                // Twitter
                 .AddTwitter(o =>
                 {
                     o.ClientId = Configuration["Twitter:ClientId"];
                     o.ClientSecret = Configuration["Twitter:ClientSecret"];
+                    // Optionally request additional fields, if needed
+                    o.Expansions.Add("pinned_tweet_id");
+                    o.TweetFields.Add("text");
+                    o.UserFields.Add("created_at");
+                    o.UserFields.Add("pinned_tweet_id");
                 })
                 .AddAmazon(o =>
                 {
@@ -287,9 +288,8 @@ namespace DoctorCeo
                     if (!string.IsNullOrEmpty(authType))
                     {
                         // By default the Client will be redirect back to the URL that issued the challenge (/login?authtype=foo),
-                        // send them to the home page instead (/).
-                        // await context.ChallengeAsync(authType, new AuthenticationProperties() { RedirectUri = "/" });
-                        await context.ChallengeAsync(authType, new AuthenticationProperties() { RedirectUri = "/privacy" });
+                        // send them to the home page instead (/).                        
+                        await context.ChallengeAsync(authType, new AuthenticationProperties() { RedirectUri = "/" });
                         return;
                     }
 
