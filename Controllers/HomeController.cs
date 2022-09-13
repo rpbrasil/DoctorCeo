@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using DoctorCeo.Models;
 
 namespace DoctorCeo.Controllers;
@@ -17,7 +18,7 @@ public class HomeController : Controller
     {
         return View();
     }
-
+[Authorize]
     public IActionResult Privacy()
     {
         return View();

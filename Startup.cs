@@ -1,16 +1,22 @@
 using System.Globalization;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
+using System.Text;
 using System.Text.Json;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Mvc.Core;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Authentication.OAuth;
-using Microsoft.AspNetCore.Authentication.Twitter;using AspNet.Security.OAuth.LinkedIn;
+using Microsoft.AspNetCore.Authentication.Twitter;
+using AspNet.Security.OAuth.LinkedIn;
+using AspNet.Security.OAuth.Twitter;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Options;
+
 
 namespace DoctorCeo
 {
@@ -30,8 +36,8 @@ namespace DoctorCeo
         {
             services.AddRouting();
             services.AddRazorPages();
-            // .AddRazorPagesOptions(o =>
-            // {
+            services.AddControllersWithViews();
+
             if (string.IsNullOrEmpty(Configuration["Facebook:ClientId"]))
             {
                 // User-Secrets: https://docs.asp.net/en/latest/security/app-secrets.html
@@ -93,14 +99,22 @@ namespace DoctorCeo
                     o.ConsumerKey = Configuration["Twitter:ClientId"];
                     o.ConsumerSecret = Configuration["Twitter:ClientSecret"];
                     o.RetrieveUserDetails = true;
+                    o.CallbackPath = new PathString("/signin-twitter");
                     o.SaveTokens = true;
                     o.ClaimActions.MapJsonKey("urn:twitter:profilepicture", "profile_image_url", ClaimTypes.Uri);
                     o.Events = new TwitterEvents()
                     {
+                        OnCreatingTicket = context =>
+                        {
+                            System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: UserId = {context.UserId}");
+                            System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: AccessToken = {context.AccessToken}");
+                            System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: AccessTokenSecret = {context.AccessTokenSecret}");
+                            System.Diagnostics.Debug.WriteLine($"TwitterEvents.OnCreatingTicket: User = {context.User}");
+                            return Task.CompletedTask;
+                        },
                         OnRemoteFailure = HandleOnRemoteFailure
                     };
                 });
-            //});
         }
         /* Azure AD app model v2 has restrictions that prevent the use of plain HTTP for redirect URLs.
            Therefore, to authenticate through microsoft accounts, try out the sample using the following URL:
@@ -253,7 +267,6 @@ namespace DoctorCeo
         {
             if (HostingEnvironment.IsDevelopment())
             {
-                //IdentityModelEventSource.ShowPII = true;
                 app.UseDeveloperExceptionPage();
             }
 
@@ -263,16 +276,11 @@ namespace DoctorCeo
                 ServeUnknownFileTypes = true,
             };
 
-            app.UseStaticFiles(options);
-
-            app.UseRouting();
+            app.UseHsts();
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseAuthentication();
-            //app.UseAuthorization();
-            app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapDefaultControllerRoute();
-        });
-
+            app.UseAuthorization();
             // Choose an authentication type
             app.Map("/signin", signinApp =>
             {
@@ -300,7 +308,6 @@ namespace DoctorCeo
                     await response.WriteAsync("</body></html>");
                 });
             });
-
             // Refresh the access token
             app.Map("/refresh_token", signinApp =>
             {
@@ -450,7 +457,6 @@ namespace DoctorCeo
                     await response.WriteAsync("</body></html>");
                 });
             });
-
             // Sign-out to remove the user cookie.
             app.Map("/signout", signoutApp =>
             {
@@ -465,7 +471,6 @@ namespace DoctorCeo
                     await response.WriteAsync("</body></html>");
                 });
             });
-
             // Display the remote error
             app.Map("/error", errorApp =>
             {
@@ -479,7 +484,6 @@ namespace DoctorCeo
                     await response.WriteAsync("</body></html>");
                 });
             });
-
 
             app.Run(async context =>
             {
@@ -545,9 +549,9 @@ namespace DoctorCeo
             {
                 return Task.FromResult<OAuthOptions>(context.RequestServices.GetRequiredService<IOptionsMonitor<LinkedInAuthenticationOptions>>().Get(currentAuthType));
             }
-            else if (string.Equals(TwitterDefaults.AuthenticationScheme, currentAuthType))
+            else if (string.Equals(TwitterAuthenticationDefaults.AuthenticationScheme, currentAuthType))
             {
-                return Task.FromResult<OAuthOptions>(context.RequestServices.GetRequiredService<IOptionsMonitor<TwitterOptions>>().Get(currentAuthType));
+                return Task.FromResult<OAuthOptions>(context.RequestServices.GetRequiredService<IOptionsMonitor<TwitterAuthenticationOptions>>().Get(currentAuthType));
             }
             else if (string.Equals("IdentityServer", currentAuthType))
             {
@@ -556,7 +560,6 @@ namespace DoctorCeo
 
             throw new NotImplementedException(currentAuthType);
         }
-
         private async Task PrintRefreshedTokensAsync(HttpResponse response, JsonDocument payload, AuthenticationProperties authProperties)
         {
             response.ContentType = "text/html";
