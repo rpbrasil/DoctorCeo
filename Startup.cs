@@ -289,7 +289,7 @@ namespace DoctorCeo
                     {
                         // By default the Client will be redirect back to the URL that issued the challenge (/login?authtype=foo),
                         // send them to the home page instead (/).                        
-                        await context.ChallengeAsync(authType, new AuthenticationProperties() { RedirectUri = "/" });
+                        await context.ChallengeAsync(authType, new AuthenticationProperties() { RedirectUri = "https://doctorceo.online#portfolio" });
                         return;
                     }
 
