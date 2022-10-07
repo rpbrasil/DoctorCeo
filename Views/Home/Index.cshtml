@@ -1,6 +1,165 @@
-﻿<div class="jumbotron">
+﻿<!DOCTYPE html>
+<html lang="en">
 
-@if (User?.Identity?.IsAuthenticated ?? false)
+<head>
+	
+</head>
+<style>
+	html {
+		scroll-behavior: smooth;
+		font-family: "Titillium Web", "Helvetica", "Arial", sans-serif;
+	}
+
+	.uppercase {
+		font-family: "Industry", "Helvetica", "Arial", sans-serif;
+	}
+
+	.topBtn {
+		display: none;
+		position: fixed;
+		bottom: 60px;
+		right: 10px;
+		z-index: 9999;
+		border: none;
+		outline: none;
+		background-color: #06356b;
+		color: white;
+		cursor: pointer;
+		padding: 10px;
+		border-radius: 10px;
+		font-size: 18px;
+	}
+
+	.topBtn:hover {
+		background-color: #0b99d1;
+		color: white;
+	}
+</style>
+
+<!-- modal style -->
+<style>
+	/* The Modal (background) */
+	.modal {
+		display: none;
+		z-index: 1000;
+		background-color: rgb(0, 0, 0);
+		/* Fallback color */
+		background-color: rgba(0, 0, 0, 0.7);
+		/* Black w/ opacity */
+
+	}
+
+	.modal::before {
+		content: '';
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	}
+
+	.modal-dialog {
+		display: inline-block;
+		vertical-align: middle;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) !important;
+	}
+
+	/* Modal Content */
+	.modal-content {
+		position: relative;
+		background-color: #fefefe;
+		margin: auto;
+		padding: 0;
+		border: 1px solid #888;
+		width: 75%;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		-webkit-animation-name: animatetop;
+		-webkit-animation-duration: 0.4s;
+		animation-name: animatetop;
+		animation-duration: 0.4s
+	}
+
+	/* Add Animation */
+	--webkit-keyframes animatetop {
+		from {
+			top: -300px;
+			opacity: 0
+		}
+
+		to {
+			top: 0;
+			opacity: 1
+		}
+	}
+
+	keyframes animatetop {
+		from {
+			top: -300px;
+			opacity: 0
+		}
+
+		to {
+			top: 0;
+			opacity: 1
+		}
+	}
+
+	/* The Close Button */
+	.close {
+		color: white;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+	}
+
+	.close:hover,
+	.close:focus {
+		color: #000;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	.modal-header {
+		padding: 2px 16px;
+		background-color: #06356b;
+		color: white;
+	}
+
+	.modal-body {
+		padding: 12px 16px;
+		text-align: center;
+	}
+
+	.modal-body li {
+		padding: 12px 16px;
+		text-align: center;
+		border-color: red;
+	}
+
+	.modal-footer {
+		padding: 2px 16px;
+		background-color: #06356b;
+		color: white;
+	}
+</style>
+
+<body style="font-size:110%">
+	<!-- Preloader -->
+	<div class="loader">
+		<!-- Preloader inner -->
+		<div class="loader-inner">
+			<div class="spinner">
+				<div class="dot1"></div>
+				<div class="dot2"></div>
+			</div>
+		</div>
+		<!-- End preloader inner -->
+	</div>
+	<!-- End preloader-->
+
+
+@* @if (User?.Identity?.IsAuthenticated ?? false)
 {
    <h1>Welcome, @User.Identity.Name</h1>
    <p>
@@ -16,5 +175,1377 @@ else
 {
    <h1>Welcome, anonymous</h1>
    <a class="btn btn-lg btn-success" href="/signin?returnUrl=%2F">Sign in</a>
-}
-</div>
+} *@
+
+	<!--Wrapper-->
+	<div id="wrapper" class="mt-150 mb-150">
+		<!--Container-->
+		<div class="container">
+			<!--Row-->
+			<div class="row">
+				<!--Left content-->
+				<div class="col-md-2 left-content pd-r0">
+					<!--Header-->
+					<header id="header">
+						<!--Main header-->
+						<div class="main-header">
+							<!--Profile image-->
+							<div class="img-profile">
+								<img alt="Ver o livro por dentro."
+									src="https://m.media-amazon.com/images/G/32/digital/sitb/sticker/sitb-sticker-v3-xsmall.png"
+									class="litb-on-click" id="ebooksSitbLogoImg" />
+								<a href="#" class="bookDegust">
+									<img src="img/wsite/olhoClinicoImpresso.jpeg" alt="" /></a>
+								<div class="name-profile t-center">
+									<a  asp-area="" asp-controller="Home" asp-action="Privacy"><h5 class="uppercase">Privacidade</h5></a>
+								</div>
+							</div>
+							<!--End profile image-->
+							<!--Main navigation-->
+							<nav id="main-nav" class="main-nav clearfix t-center uppercase tabbed">
+								<ul class="clearfix">
+									<li>
+										<a href="#about"><i class="icon-book"></i>sobre<span>o livro</span></a>
+									</li>
+									<li>
+										<a href="#resume"><i class="icon-user-1"></i>sobre<span>o autor</span></a>
+									</li>
+									<li>
+										<a href="#portfolio"><i class="icon-gift"></i>playground<span>área do
+												leitor</span></a>
+									</li>
+									<li>
+										<a href="#blog"><i class="icon-basket"></i>Lojinha<span>Presentes</span></a>
+									</li>
+									<li>
+										<a href="#contact"><i class="icon-chat-2"></i>contato<span>fale
+												comigo</span></a>
+									</li>
+								</ul>
+							</nav>
+							<!--End main navigation-->
+						</div>
+						<!--End main header-->
+					</header>
+					<!--End  header-->
+				</div>
+				<!--End left content-->
+				<!--Right content-->
+				<div id="content-right" class="col-md-9 right-content pd-r0 pd-l0">
+					<!--About Tab-->
+					<section id="about" class="bg-white t-center">
+						<!--About -->
+						<div class="about">
+							<!--Content-->
+							<div class="content">
+								<!--Block content-->
+								<div class="block-content mb-100">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<div class="main-title profile">
+												<h1 class="mb-20" style="font-weight:700;font-family: 'Industry';"><span
+														style="font-family:'Industry'; font-weight:500;">OLHO</span>
+													CLÍNICO</h1>
+												<br />
+												<h3>
+													Uma nova visão sobre o
+													<span style="color: rgb(8, 8, 8); font-weight: 500">processo
+														decisório empresarial</span>
+												</h3>
+											</div>
+										</div>
+									</div>
+									<!--End row-->
+								</div>
+								<!--End block content-->
+								<!--Block content-->
+								<div class="block-content mb-100">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<div class="sub-title mb-40">
+												<h2 class="uppercase">SOBRE O LIVRO</h2>
+											</div>
+										</div>
+									</div>
+									<!--End row-->
+									<p>
+										Para compreender a utilidade deste livro sobre processo
+										decisório, é muito importante que o leitor considere três
+										fatos:
+									</p>
+									<br />
+									<div style="margin-left: 10%">
+										<ul
+											style="color: rgb(8, 8, 8); font-weight: 500;list-style-type: square;text-align: left;display: table;margin-left: 10%;">
+											<li>
+												Fato 1: As interações humanas estão excessivamente
+												rápidas;
+											</li>
+											<li>
+												Fato 2: A quantidade de informação circulante é
+												gigantesca;
+											</li>
+											<li>
+												Fato 3: A independência dos agentes decisores torna o
+												ambiente corporativo cada vez mais complexo.
+											</li>
+										</ul>
+									</div>
+									<br />
+									<p>
+										Estas afirmações nos levam naturalmente a questionar: será
+										que o
+										<span style="color: rgb(8, 8, 8); font-weight: 500">Conhecimento</span>
+										para a tomada de
+										<span style="color: rgb(8, 8, 8); font-weight: 500">Decisões Empresariais</span>
+										é insuficiente, ou será que já detemos todo o conhecimento
+										e ele só precisa ser corretamente aplicado?
+									</p>
+									<p><br>
+										Na presença de
+										<span style="color: rgb(8, 8, 8); font-weight: 500">Complexidade</span>, é
+										inegável que necessitamos de uma
+										<span style="color: rgb(8, 8, 8); font-weight: 500">Nova Estrutura de
+											Apoio</span>
+										ao processo decisório, mais
+										<span style="color: rgb(8, 8, 8); font-weight: 500">Humana</span>
+										e, por que não, mais
+										<span style="color: rgb(8, 8, 8); font-weight: 500">Racional</span>, para
+										compreender situações, tratar desafios e
+										contingenciar reincidências e impactos.
+									</p>
+									<br>
+									<div class="post-media mb-30" style="width: 70%; margin: auto">
+										<a href="#canvas" onclick="loadApp();"><img
+												style="max-width: 65%; filter: drop-shadow(8px 8px 10px gray);" alt=""
+												src="img/wsite/CAPA-Olho-Clinico.jpg" /></a>
+									</div>
+									<br>
+									<p>
+										Neste contexto, o autor propõe em Olho Clínico uma
+										<span style="color: rgb(8, 8, 8); font-weight: 500">Alternativa
+											Multidisciplinar</span>
+										para conferir mais
+										<span style="color: rgb(8, 8, 8); font-weight: 500">Segurança e
+											Assertividade</span>
+										às decisões empresariais. O conhecimento é construído
+										passo a passo, por meio de
+										<span style="color: rgb(8, 8, 8); font-weight: 500">analogias e metáforas
+											médicas</span>
+										e suas correlações com a economia, administração e
+										tecnologia.
+									</p><br>
+									<p>O leitor é didaticamente estimulado a
+										<span style="color: rgb(8, 8, 8); font-weight: 500">aprimorar a acurácia do
+											diagnóstico de situações e
+											maximizar o sucesso na solução dos problemas
+											corporativos</span>.
+									</p>
+									<p> Ao final da leitura, este poderá comprovar que:
+									</p>
+									<br />
+									<div style="margin-left: 10%">
+										<ul style="
+                          color: rgb(8, 8, 8);
+                          font-weight: 500;
+                          list-style-type: square;
+                          text-align: left;
+                          display: table;
+                        ">
+											<li>
+												As ferramentas tradicionais de análise empresarial
+												precisam ser adaptadas para ambientes complexos;
+											</li>
+											<li>
+												O processo decisório médico é absolutamente aderente
+												aos desafios corporativos atuais;
+											</li>
+											<li>
+												As analogias e metáforas de Médicos e CEOs
+												apresentadas neste livro permitem a criação de um novo
+												repertório profissional, que levará à entrega de
+												resultados perfeitamente alinhados com as expectativas
+												da empresa.
+											</li>
+										</ul>
+									</div>
+									<br />
+									<p>
+										Além disso, o conjunto de atividades proposto a cada
+										capítulo faz com que esta obra seja indicada para todo o
+										espectro profissional, desde
+										<span style="color: rgb(8, 8, 8); font-weight: 500">estudantes de curso superior
+											até executivos
+											experientes</span>, interessados em
+										<span style="color: rgb(8, 8, 8); font-weight: 500">expandir suas competências
+											para a tomada de
+											decisão.</span>
+									</p>
+									<img class="signature mt-20" style="width: 50%" src="img/wsite/signature.PNG"
+										alt="" />
+								</div>
+								<!--End block content-->
+								<!--Block content-->
+								<div class="block-content mb-100 pb-30">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<div class="sub-title mb-40">
+												<h2 class="uppercase">Dados</h2>
+											</div>
+										</div>
+									</div>
+									<!--End row-->
+									<div class="row">
+										<div class="col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-3">
+											<!--Listing-->
+											<div class="listing mt-40">
+												<div class="listing-inner">
+													<div class="listing-event">
+														<ul class="data left mob">
+															<li class="emph-1">TÍTULO</li>
+															<li class="emph-1">PUBLICAÇÃO</li>
+															<li class="emph-1">ISBN</li>
+															<li class="emph-1">AUTOR</li>
+															<li class="emph-1">PÁGINAS</li>
+															<li class="emph-1">IMPRESSA</li>
+															<li class="emph-1">DIGITAL</li>
+															<li class="emph-1">CAPA</li>
+														</ul>
+														<ul class="data right mob">
+															<li>Olho Clínico</li>
+															<li>24.11.2022</li>
+															<li>65423132.64</li>
+															<li>RENATO A.J. PURCHIO</li>
+															<li>150</li>
+															<li>REVENDEDORES</li>
+															<li>AMAZON KINDLE</li>
+															<li>
+																<a id="rubens" target="_blank"
+																	href="https://capista.com.br">RUBENS LIMA</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<!--End listing-->
+										</div>
+									</div>
+								</div>
+								<!--End block content-->
+								<!--Block content-->
+								<div class="block-content mb-100 pb-30">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<div class="sub-title mb-40">
+												<h2 class="uppercase">REVENDEDORES</h2>
+											</div>
+										</div>
+									</div>
+									<!--End row-->
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-3">
+											<!--Listing-->
+											<div class="listing mt-40">
+												<a class="uppercase emph-1 btn-1" target="_blank"
+													href="https://www.amazon.com.br/gp/bestsellers/digital-text/5559837011/ref=zg_bs">Amazon
+													Kindle</a>
+												<a class="uppercase emph-1 btn-2" href="#blog">Prefiro em PDF</a>
+												<div class="listing-inner">
+													<div class="listing-event">
+														<ul id="revend" class="data left">
+															<li><span class="emph-1">Amazon :</span></li>
+															<li><span class="emph-1">Saraiva :</span></li>
+														</ul>
+														<ul id="revend2" class="data right">
+															<li>
+																<span class="emph-1"><i class="icon-amazon"></i></span>
+																www.amazon.com.br
+															</li>
+															<li>
+																<span class="emph-1"><i class="icon-website"></i></span>
+																www.saraiva.com.br
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<!--End listing-->
+										</div>
+									</div>
+									<!--End row-->
+								</div>
+								<!--End block content-->
+
+								<!--Block content-->
+								<div class="block-content mb-100">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<div class="sub-title mb-40">
+												<h2 class="uppercase">depoimentos</h2>
+											</div>
+										</div>
+									</div>
+									<!--End row-->
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<div class="col-md-10 col-md-offset-1">
+												<!--Slider-->
+												<div class="testi clearfix">
+													<ul id="testimonial-carousel">
+														<li>
+															<div class="block-quote t-left">
+																<blockquote>
+																	“Lorem ipsum dolor sit amet, consectetur
+																	adipiscing elit, sed do eiusmod tempor
+																	incididunt ut labore et dolore magna aliqua.
+																	Ut enim ad minim veniam, quis nostrud
+																	exercitation ullamco laboris nisi ut aliquip
+																	ex ea commodo consequat. Duis aute irure
+																	dolor in reprehenderit in voluptate velit
+																	esse.”
+																</blockquote>
+																<h6 class="block-profile mt-20">
+																	Mister Anderson
+																	<span>Matrix CEO</span>
+																</h6>
+															</div>
+															<div class="block-img">
+																<img alt="" src="img/wsite/foto1.PNG" />
+															</div>
+														</li>
+														<li>
+															<div class="block-quote t-left">
+																<blockquote>
+																	“Lorem ipsum dolor sit amet, consectetur
+																	adipiscing elit, sed do eiusmod tempor
+																	incididunt ut labore et dolore magna aliqua.
+																	Ut enim ad minim veniam, quis nostrud
+																	exercitation ullamco laboris nisi ut aliquip
+																	ex ea commodo consequat. Duis aute irure
+																	dolor in reprehenderit in voluptate velit
+																	esse.”
+																</blockquote>
+																<h6 class="block-profile mt-20">
+																	Agent Smith<span> Virus Company CEO</span>
+																</h6>
+															</div>
+															<div class="block-img">
+																<img alt="" src="img/wsite/foto1.PNG" />
+															</div>
+														</li>
+													</ul>
+												</div>
+												<!--End  slider-->
+											</div>
+										</div>
+									</div>
+									<!--End row-->
+								</div>
+								<!--End block content-->
+								<!--Block content-->
+								<div class="block-content">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<span class="page-number emph-1">- 1/5 -</span>
+										</div>
+									</div>
+									<!--End row-->
+								</div>
+								<!--End block content-->
+							</div>
+							<!--End content-->
+						</div>
+						<!--End about-->
+					</section>
+					<!--End about tab-->
+					<!--Resume Tab-->
+					<section id="resume" class="bg-white t-center">
+						<!--Resume-->
+						<div class="resume">
+							<!--Content-->
+							<div class="content">
+								<!--Block content-->
+								<div class="block-content mb-100">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<div class="main-title">
+												<h1 class="mb-20">Autor</h1>
+												<h5 class="uppercase">Renato A.J. Purchio</h5>
+											</div>
+										</div>
+									</div>
+									<!--End row-->
+								</div>
+								<!--End block content-->
+								<!--Block content-->
+								<div class="block-content mb-100">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<div class="sub-title mb-40">
+												<h2 class="uppercase">SOBRE O AUTOR</h2>
+											</div>
+										</div>
+									</div>
+									<!--End row-->
+									<img class="signature mt-20" src="img/wsite/foto1.PNG" alt="" />
+									<p></p>
+									<br />
+									<p>
+										Renato A. J. Purchio é um profissional híbrido: Graduado
+										em Medicina, Pós-graduado em Engenharia, com MBA em
+										Finanças e certificações em Tecnologia da Informação.
+										Exerceu cargos de alta gestão e prestou consultoria para
+										grandes empresas, criou produtos, serviços e registrou
+										patentes, proferiu aulas e seminários no Brasil,
+										participou de eventos como palestrante e publicou
+										trabalhos no exterior.
+									</p>
+									<br />
+								</div>
+								<!--End block content-->
+								<!--Block content-->
+								<div class="block-content mb-100 pb-30">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<div class="sub-title mb-40">
+												<h2 class="uppercase">INTERESSES</h2>
+											</div>
+										</div>
+									</div>
+									<!--End row-->
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<!--Listing-->
+											<div class="listing-large mt-40">
+												<a class="uppercase emph-1 btn-1" target="_blank"
+													href="https://www.rajp.com.br">WEBSITE</a>
+												<a class="uppercase emph-1 btn-2" target="_blank"
+													href="https://www.linkedin.com/in/renatopurchio">REDE SOCIAL</a>
+												<div class="listing-large-inner">
+													<div class="listing-event">
+														<ul class="data left clearfix">
+															<li>
+																<h5>Html Css Js</h5>
+																<div class="rating">
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																</div>
+															</li>
+															<li>
+																<h5>C# Python</h5>
+																<div class="rating">
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																</div>
+															</li>
+															<li>
+																<h5>Machine Learning</h5>
+																<div class="rating">
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																</div>
+															</li>
+															<li>
+																<h5>SQL Server</h5>
+																<div class="rating">
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																</div>
+															</li>
+															<li>
+																<h5>Azure</h5>
+																<div class="rating">
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																</div>
+															</li>
+															<li>
+																<h5>PWA</h5>
+																<div class="rating">
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																</div>
+															</li>
+															<li>
+																<h5>Bots</h5>
+																<div class="rating">
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																</div>
+															</li>
+															<li>
+																<h5>APIs</h5>
+																<div class="rating">
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																</div>
+															</li>
+
+															<li>
+																<h5>.NetCore</h5>
+																<div class="rating">
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																</div>
+															</li>
+															<li>
+																<h5>Neural Networks</h5>
+																<div class="rating">
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																</div>
+															</li>
+															<li>
+																<h5>Tableau</h5>
+																<div class="rating">
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																	<span></span>
+																</div>
+															</li>
+														</ul>
+														<ul class="data right clearfix">
+															<li>
+																<h5>Línguas</h5>
+																<ul style="font-size:95%;">
+																	<li class="emph-1">
+																		Inglês
+																		<span class="emph-4">(so far so good)</span>
+																	</li>
+																	<li class="emph-1">
+																		Francês
+																		<span class="emph-4">(comme il faut)</span>
+																	</li>
+																	<li class="emph-1">
+																		Italiano
+																		<span class="emph-4">(come vuole la
+																			mamma)</span>
+																	</li>
+																	<li class="emph-1">
+																		Espanhol
+																		<span class="emph-4">(cada día)</span>
+																	</li>
+																	<li class="emph-1">
+																		Alemão
+																		<span class="emph-4">(richtig aber
+																			langsam)</span>
+																	</li>
+																	<li class="emph-1">
+																		Português
+																		<span class="emph-4">(nem tanto assim)</span>
+																	</li>
+																</ul>
+															</li>
+
+															<li>
+																<h5>Hobbies</h5>
+																<ul class="hb-list">
+																	<li>
+																		<span><i class="icon-music-4"></i></span>
+																		<h6>Música</h6>
+																	</li>
+
+																	<li>
+																		<span><i class="icon-laptop"></i></span>
+																		<h6>Coding</h6>
+																	</li>
+
+																	<li>
+																		<span><i class="icon-globe-6"></i></span>
+																		<h6>Viagem</h6>
+																	</li>
+
+																	<li>
+																		<span><i class="icon-food-1"></i></span>
+																		<h6>Cozinha</h6>
+																	</li>
+																</ul>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+
+											<!--End listing-->
+										</div>
+									</div>
+									<!--End row-->
+								</div>
+								<!--End block content-->
+
+								<!--Block content-->
+								<div class="block-content">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<span class="page-number emph-1">- 2/5 -</span>
+										</div>
+									</div>
+									<!--End row-->
+								</div>
+								<!--End block content-->
+							</div>
+							<!--End content-->
+						</div>
+						<!--End resume-->
+					</section>
+					<!--End resume tab-->
+					<!--Portfolio Tab-->
+					<section id="portfolio" class="bg-white t-center">
+						<!--Portfolio-->
+						<div class="portfolio">
+							<!--Content-->
+							<div class="content">
+								<!--Block content-->
+								<div class="block-content mb-100">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<div class="main-title">
+												<h1 class="mb-20">Playground</h1>
+												<h5 class="uppercase">Área do leitor</h5>
+											</div>
+										</div>
+									</div>
+
+									<!--End row-->
+								</div>
+								<!--End block content-->
+								<!--Block content-->
+								<div class="block-content mb-100">
+									<!--Works-->
+									<div class="works">
+										<!--Row-->
+										<div class="row">
+											<div class="col-md-12">
+												<!--Block filter-->
+												<div class="block-filter uppercase mb-40">
+													<ul class="filter" id="category">
+														<li>
+															<a class="active" href="#all" data-filter="all"
+																style="color: rgb(8, 8, 8);font-size: 110%;font-weight: 500;">Acesse
+																os recursos didáticos</a>
+														</li>
+														<li>
+															<a href="#" data-filter="mindmap">Mapas Mentais</a>
+														</li>
+														<li>
+															<a href="#" data-filter="figure">Figuras</a>
+														</li>
+														<li>
+															<a href="#" data-filter="table">Exercícios</a>
+														</li>
+													</ul>
+												</div>
+												<!--End block filter-->
+											</div>
+										</div>
+										<!--End row-->
+										<!--Row-->
+										<div class="row">
+											<div class="col-md-12">
+												<ul class="work">
+													<li class="col-sm-6">
+														<!--Item-->
+														<div class="item mindmap">
+															<a href="#" class="mindMaps">
+																<div class="desc">
+																	<h5 class="proj-desc">
+																		Mapas Mentais
+																		<span>Download PDF</span>
+																	</h5>
+																</div>
+																<img src="img/wsite/mindMaps2.png" alt="" />
+															</a>
+														</div>
+														<!--End item-->
+													</li>
+													<li class="col-sm-6">
+														<!--Item-->
+														<div class="item table">
+															<a href="#" class="">
+																<div class="desc">
+																	<h5 class="proj-desc">
+																		Caderno de Exercícios
+																		<span>Download PDF</span>
+																	</h5>
+																</div>
+																<img src="img/wsite/cadernoExerc.png" alt="" />
+															</a>
+														</div>
+														<!--End item-->
+													</li>
+													<li class="col-sm-6">
+														<!--Item-->
+														<div class="item figure">
+															<a href="#" download="figuras.pdf" class="figures">
+																<div class="desc">
+																	<h5 class="proj-desc">
+																		Figuras
+																		<span>Download PDF</span>
+																	</h5>
+																</div>
+																<img src="img/wsite/imagensGraf.png" alt="" />
+															</a>
+														</div>
+														<!--End item-->
+													</li>
+													<li class="col-sm-6">
+														<!--Item-->
+														<div class="item all table mindmap figure">
+															<a href="#" onclick="checkCookie();" class="">
+																<div class="desc">
+																	<h5 class="proj-desc">
+																		Conjunto todo
+																		<span>Download PDF</span>
+																	</h5>
+																</div>
+																<img src="img/portfolio/4.jpg" alt="" />
+															</a>
+														</div>
+														<!--End item-->
+													</li>
+												</ul>
+											</div>
+										</div>
+										<!--End row-->
+									</div>
+									<!--End works-->
+								</div>
+								<!--End block content-->
+								<!--Block content-->
+								<div class="block-content">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<span class="page-number emph-1">- 3/5 -</span>
+										</div>
+									</div>
+									<!--End row-->
+								</div>
+								<!--End block content-->
+							</div>
+							<!--End content-->
+						</div>
+						<!--End portfolio-->
+					</section>
+					<!--End portfolio tab-->
+					<!--Blog Tab-->
+					<section id="blog" class="bg-white t-center">
+						<!--Blog-->
+						<div class="blog">
+							<!--Content-->
+							<div class="content">
+								<!--Block content-->
+								<div class="block-content mb-100">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<div class="main-title">
+												<h1 class="mb-20">Lojinha</h1>
+												<h5 class="uppercase">
+													Compre o seu e dê de presente!
+												</h5>
+											</div>
+										</div>
+									</div>
+									<!--End row-->
+								</div>
+								<!--End block content-->
+								<!--Block content-->
+								<div class="block-content mb-100">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<!--Block posts-->
+											<div class="block-posts">
+												<!--Block post-->
+												<div class="block-post mb-100">
+													<div class="post-title mb-10">
+														<a href="blog_single.html">
+															<h4>Quero comprar a versão impressa</h4>
+														</a>
+													</div>
+													<ul class="post-meta mb-30">
+														<li>
+															<span class="entry-date"> disponível na </span>
+														</li>
+														<li>
+															<span class="entry-cat">
+																<i class="icon-amazon"> </i><a href="#"> Amazon</a>
+															</span>
+														</li>
+													</ul>
+													<div class="post-media mb-30" style="width: 60%; margin: auto">
+														<img alt="Ver o livro por dentro."
+															src="https://m.media-amazon.com/images/G/32/digital/sitb/sticker/sitb-sticker-v3-xsmall.png"
+															class="litb-on-click" id="ebooksSitbLogoImg2" />
+														<a href="#" class="bookDegust"><img alt=""
+																src="img/wsite/olhoClinicoVertical2.jpeg" /></a>
+													</div>
+													<div class="entry-content">
+														<p>
+															Nesta modalidade, a Amazon imprime o livro de
+															acordo com sua preferência - papel comum ou capa
+															dura. O tempo de entrega varia conforme sua
+															localização.
+														</p>
+													</div>
+													<a class="but" target="_blank"
+														href="https://www.amazon.com.br/ebooks-kindle/">Boa, vamos
+														lá!</a>
+												</div>
+												<!--End block post-->
+												<!--Block post-->
+												<div class="block-post mb-100">
+													<div class="post-title mb-10">
+														<a href="blog_single.html">
+															<h4>Quero comprar a versão Kindle</h4>
+														</a>
+													</div>
+													<ul class="post-meta mb-30">
+														<li>
+															<span class="entry-date"> disponível na </span>
+														</li>
+														<li>
+															<span class="entry-cat">
+																<i class="icon-amazon"> </i><a href="#"> amazon</a>
+															</span>
+														</li>
+													</ul>
+													<div class="post-media mb-30" style="width: 70%; margin: auto">
+														<a href="blog_single.html"><img alt=""
+																src="img/wsite/kindlePhoto2.jpg" /></a>
+													</div>
+													<div class="entry-content">
+														<p>
+															Esta versão digital foi diagramada para
+															<i class="icon-amazon"></i> Kindle e proporciona
+															muito conforto ao leitor.
+														</p>
+													</div>
+													<a class="but" href="blog_single.html">Gostei, vamos lá!</a>
+												</div>
+												<!--End block post-->
+												<!--Block post-->
+												<div class="block-post mb-100">
+													<div class="post-title mb-10">
+														<a href="blog_single.html">
+															<h4>Prefiro comprar a versão em pdf</h4>
+														</a>
+													</div>
+													<p></p>
+													<div class="post-media mb-30" style="width: 60%; margin: auto">
+														<a href="blog_single.html"><img alt=""
+																src="img/wsite/olhoClinicoPad2.jpeg" /></a>
+													</div>
+													<ul class="post-meta mb-30">
+														<li>
+															<span class="entry-date"> disponível </span>
+														</li>
+														<li>
+															<span class="entry-cat">
+																<i class="icon-location"> </i><a href="#">Aqui no
+																	site</a>
+															</span>
+														</li>
+													</ul>
+													<div class="entry-content">
+														<div class="block-quote blog t-left">
+															<blockquote>
+																Leia em qualquer dispositivo com o
+																<a target="_blank"
+																	href="https://get.adobe.com/br/reader/" alt><i
+																		class="icon-file-pdf"></i>Adobe Acrobat
+																	Reader</a>. No seu desktop, celular, tablet,
+																laptop...<br />
+																<p></p>
+																<h3 class="block-profile">
+																	Você pode enviar de presente um livro
+																	autografado pelo autor no formato PDF.
+																</h3>
+															</blockquote>
+															<h3 class="block-profile mt-20" style="text-align: right">
+																Surpreenda!<span>
+																	Envie seu presente por email</span>
+															</h3>
+														</div>
+													</div>
+												</div>
+												<!--End block post-->
+												<a class="but" href="#">Show, vamos lá!<span
+														class="right-arr">&rarr;</span></a>
+											</div>
+											<!--End block posts-->
+										</div>
+									</div>
+									<!--End row-->
+								</div>
+								<!--End block content-->
+								<!--Block content-->
+								<div class="block-content">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<span class="page-number emph-1">- 4/5 -</span>
+										</div>
+									</div>
+									<!--End row-->
+								</div>
+								<!--End block content-->
+							</div>
+							<!--End content-->
+						</div>
+						<!--End blog-->
+					</section>
+					<!--End blog tab-->
+					<!--Contact Tab-->
+					<section id="contact" class="bg-white t-center">
+						<!--Contact-->
+						<div class="contact">
+							<!--Content-->
+							<div class="content">
+								<!--Block content-->
+								<div class="block-content mb-100">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<div class="main-title">
+												<h1 class="mb-20">Contato</h1>
+												<h5 class="uppercase">Vamos conversar</h5>
+											</div>
+										</div>
+									</div>
+									<!--End row-->
+								</div>
+								<!--End block content-->
+
+								<!--Block content-->
+
+								<!--End block content-->
+
+								<!--Block content-->
+								<div class="block-content mb-100">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<div class="sub-title mb-40">
+												<h2 class="uppercase">Faça contato</h2>
+											</div>
+										</div>
+									</div>
+									<!--End row-->
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<!--Reach-->
+											<div class="block-reach">
+												<div id="mail_success" class="success" style="display: none">
+													Vou abrir seu servidor de email para que você possa
+													checar a mensagem antes de enviá-la.
+												</div>
+												<div id="mail_fail" class="error" style="display: none">
+													Por gentileza, preencha os campos obrigatórios em
+													vermelho para que eu possa enviar esta mensagem.
+												</div>
+												<form id="emailForm" class="contact-form" method="" action="">
+													<!--Input columns-->
+													<div class="input-columns clearfix">
+														<div class="column1">
+															<div class="column-inner">
+																<input type="text" placeholder="Nome" value="" id="name"
+																	name="name" />
+															</div>
+														</div>
+														<!--Column-->
+														<div class="column2">
+															<div class="column-inner">
+																<input type="text" placeholder="Email" value=""
+																	id="email" name="email" />
+															</div>
+														</div>
+														<!--End column-->
+													</div>
+													<!--End input columns-->
+													<input type="text" placeholder="Fone" value="" id="phone"
+														name="phone" />
+													<textarea name="message" placeholder="Mensagem" id="message"
+														cols="45" rows="7"></textarea>
+													<div id="submit">
+														<button type="button" id="sendEmail" class="btn-block but"
+															onclick="SendEmail();">
+															Enviar
+														</button>
+													</div>
+												</form>
+											</div>
+											<!--End reach-->
+										</div>
+									</div>
+									<!--End row-->
+								</div>
+								<!--End block content-->
+								<!--Block content-->
+								<div class="block-content">
+									<!--Row-->
+									<div class="row">
+										<div class="col-md-12">
+											<span class="page-number emph-1">- 5/5 -</span>
+										</div>
+									</div>
+									<!--End row-->
+								</div>
+								<!--End block content-->
+							</div>
+							<!--End content-->
+						</div>
+						<!--End contact-->
+					</section>
+					<!--End contact tab-->
+				</div>
+				<!--End right content-->
+				<!--Footer-->
+				<footer class="footer">
+					<div class="col-md-1 pd-l0">
+						<!--Social-->
+						<ul class="social">
+							<li>
+								<a target="_blank" href="https://www.facebook.com/"><i class="icon-facebook"></i></a>
+							</li>
+							<li>
+								<a target="_blank" href="https://twitter.com/home"><i class="icon-twitter"></i></a>
+							</li>
+							<li>
+								<a target="_blank" href="https://www.google.com/"><i class="icon-gplus"></i></a>
+							</li>
+							<li>
+								<a target="_blank" href="https://www.linkedin.com"><i class="icon-linkedin"></i></a>
+							</li>
+						</ul>
+						<!--End social-->
+						<!--Copyright-->
+						<div class="copyright">
+							<p>COMPARTILHE <i class="icon-share-1"></i></p>
+						</div>
+						<!--End copyright-->
+					</div>
+				</footer>
+				<!--End footer-->
+			</div>
+			<!--End row-->
+		</div>
+		<!--End  container-->
+		<button id="topBtn" onclick="topFunction()" class="btn topBtn" style="float: right">
+			<i class="icon-up-open-3"></i>
+		</button>
+	</div>
+	<!--End wrapper-->
+
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+		<div class="modal-dialog">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2 style="color:white">Login</h2>
+				</div>
+				<div class="modal-body">
+					<ul class="">
+						<li><a style="padding:10px;" class="btn-block btn-primary"
+								href="https://doctorceo.azurewebsites.net/signin?authscheme=LinkedIn"><i
+									class="icon-linkedin"></i> LinkedIn</a></li>
+						<li><a style="padding:10px;" class="btn-block btn-primary"
+								href="https://doctorceo.azurewebsites.net/signin?authscheme=Facebook"><i
+									class="icon-facebook"></i> Facebook</a></li>
+						<li><a style="padding:10px;" class="btn-block btn-primary"
+								href="https://doctorceo.azurewebsites.net/signin?authscheme=Google"><i
+									class="icon-gplus"></i> Google</a></li>
+						<li><a style="padding:10px;" class="btn-block btn-primary"
+								href="https://doctorceo.azurewebsites.net/signin?authscheme=Twitter"><i
+									class="icon-twitter"></i> Twitter</a></li>
+						<li><a style="padding:10px;" class="btn-block btn-primary"
+								href="https://doctorceo.azurewebsites.net/signin?authscheme=Amazon"><i
+									class="icon-amazon"></i> Amazon</a></li>
+					</ul>
+				</div>
+				<div class="modal-footer">
+					<h3 style="color:white">Escolha seu provedor</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+@* carregar nesta página *@
+   <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
+   <script src="js/jquery.easytabs.min.js" type="text/javascript"></script>
+   <!-- modal script -->
+	<script>
+		// Get the modal
+		var modal = document.getElementById("myModal");
+		// Get the button that opens the modal
+		var btn = document.getElementById("myBtn");
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+		// When the user clicks the button, open the modal 
+		// btn.onclick = function () {
+		// 	modal.style.display = "block";
+		// }
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function () {
+			modal.style.display = "none";
+		}
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
+
+   
+	<!-- ADOBE iframe open -->
+	<script>
+		$(".bookDegust").click(function () {
+			window.open('https://www.doctorceo.online/bookDegust.html', '_blank');
+		});
+		$(".mindMaps").click(function () {
+			window.open('https://www.doctorceo.online/mindMaps.html', '_blank');
+		});
+		$(".figures").click(function () {
+			window.open('https://www.doctorceo.online/figures.html', '_blank');
+		});
+
+		// set Cookie
+		function setCookie(cname, cvalue, exdays) {
+			const d = new Date();
+			d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+			let expires = "expires=" + d.toUTCString();
+			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+
+		// get Cookie
+		function getCookie(cname) {
+			let name = cname + "=";
+			let decodedCookie = decodeURIComponent(document.cookie);
+			let ca = decodedCookie.split(';');
+			for (let i = 0; i < ca.length; i++) {
+				let c = ca[i];
+				while (c.charAt(0) == ' ') {
+					c = c.substring(1);
+				}
+				if (c.indexOf(name) == 0) {
+					return c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}
+		// check Cookie
+		function checkCookie() {
+			let username = getCookie("username");
+			if (username != "") {
+				alert("Welcome again " + username);
+			} else {
+				// username = prompt("Please enter your name:", "");
+				modal.style.display = "block";
+				if (username != "" && username != null) {
+					setCookie("username", username, 365);
+				}
+			}
+		}
+	</script>
+
+	<!-- IS MOBILE -->
+	<script>
+		function isMobile() {
+			if (
+				navigator.userAgent.match(/Android/i) ||
+				navigator.userAgent.match(/webOS/i) ||
+				navigator.userAgent.match(/iPhone/i) ||
+				navigator.userAgent.match(/iPad/i) ||
+				navigator.userAgent.match(/iPod/i) ||
+				navigator.userAgent.match(/BlackBerry/i) ||
+				navigator.userAgent.match(/Windows Phone/i)
+			) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
+	<!-- EASYSCROLL -->
+	<script>
+		(function ($) {
+			"use strict";
+			// Easytab setup
+			$("#wrapper").easytabs({
+				animate: true,
+				updateHash: false,
+				transitionIn: "fadeIn",
+				transitionOut: "fadeOut",
+				animationSpeed: 100,
+				tabActiveClass: "active",
+				tabs: " #main-nav.tabbed > ul > li ",
+				transitionInEasing: "linear",
+				transitionOutEasing: "linear",
+			});
+		})(jQuery);
+		// scroll page to top after anchor click
+		const anc = document.getElementById("content-right");
+		$("#wrapper").bind("easytabs:after", function () {
+			//window.scrollTo({ top: 150, left: 150, behavior: 'smooth' });
+			anc.scrollIntoView({ behavior: "smooth" });
+		});
+
+		//envia email usando email user
+		function SendEmail() {
+			var name = $("#name").val();
+			var phone = $("#phone").val();
+			var email = $("#email").val();
+			var message = $("#message").val();
+			var fail = $("#mail_fail");
+			var success = $("#mail_success");
+			var formattedBody = "";
+			if (phone.length == 0) {
+				formattedBody =
+					" meu nome é " +
+					name +
+					", Não quis revelar meu telefone mas gostaria que você soubesse que :	" +
+					message +
+					". Por gentileza responda usando este email: " +
+					email;
+			} else {
+				formattedBody =
+					" my name is " +
+					name +
+					", my phone number is " +
+					phone +
+					" and that's what I would like you to know: " +
+					message +
+					".Please be so kind to answer using this email: " +
+					email;
+			}
+			if (name.length == 0 || email.length == 0 || message.length == 0) {
+				success.css("display", "none");
+				fail.css("display", "block");
+				$("#name").css({ border: "5px solid red" });
+				$("#email").css({ border: "5px solid red" });
+				$("#message").css({ border: "5px solid red" });
+			} else {
+				var mailToLink =
+					"mailto:rntprch@gmail.com?subject=contact from rajp.com.br!&body=Dear Renato, " +
+					formattedBody;
+				fail.css("display", "none");
+				success.css("display", "none");
+				$("#name").css({ border: "1px solid rgba(0,0,0,.2)" });
+				$("#email").css({ border: "1px solid rgba(0,0,0,.2)" });
+				$("#message").css({ border: "1px solid rgba(0,0,0,.2)" });
+				$("#emailForm")[0].reset();
+				success.css("display", "block");
+				window.location.href = mailToLink;
+			}
+		}
+	</script>
+	<!-- scrollButton -->
+	<script>
+		// Get the button:
+		let mybutton = document.getElementById("topBtn");
+		// When the user scrolls down 20px from the top of the document, show the button
+		window.onscroll = function () {
+			scrollFunction();
+		};
+		function scrollFunction() {
+			if (
+				document.body.scrollTop > 20 ||
+				document.documentElement.scrollTop > 20
+			) {
+				mybutton.style.display = "block";
+				mybutton.style.color = "white";
+			} else {
+				mybutton.style.display = "none";
+			}
+		}
+		// When the user clicks on the button, scroll to the top of the document
+		function topFunction() {
+			document.body.scrollTop = 0; // For Safari
+			document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+		}
+	</script>
+	<!-- AJUSTES DE UI MOBILE -->
+	<script>
+		if (isMobile()) {
+			$("div.post-media.mb-30").css("width", "99%");
+			$("img.signature").css("width", "90%");
+			$("ul.mob > li").css("font-size", "75%");
+			$("#rubens").css("font-size", "12px");
+			$("#revend").css("display", "none");
+			$("#revend2").css("text-align", "center");
+			$("ul.data.left.mob").css("float", "left").css("margin-right", "5px");
+			$("ul.data.right.mob").css("float", "right").css("margin-left", "0px");
+			$("ul.social").css({ float: "right", display: "block" });
+			$("nav#main-nav").css({
+				position: "fixed",
+				left: "0",
+				bottom: "0",
+				width: "100%",
+				"z-index": "9999",
+				overflow: "hidden",
+			});
+			$("#wrapper").bind("easytabs:after", function () {
+				window.scrollTo({ top: 380, left: 150, behavior: "smooth" });
+			});
+			$(".modal-content").css("width", "100%");
+			$(".modal-dialog").css({ width: "90%", left: "47%" });
+		}
+	</script>
+
+	<!-- Google analytics -->
+
+	<!-- End google analytics -->
+</body>
+
+</html>

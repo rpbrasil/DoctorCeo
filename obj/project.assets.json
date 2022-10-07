@@ -5346,11 +5346,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\DoctorCeo.csproj",
+      "projectUniqueName": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\DoctorCeo.csproj",
       "projectName": "DoctorCeo",
-      "projectPath": "c:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\DoctorCeo.csproj",
+      "projectPath": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\DoctorCeo.csproj",
       "packagesPath": "C:\\Users\\rpbrasil\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\obj\\",
+      "outputPath": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rpbrasil\\AppData\\Roaming\\NuGet\\NuGet.Config"

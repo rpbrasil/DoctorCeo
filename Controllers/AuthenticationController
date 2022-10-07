@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
-using DoctorCeo.Extensions;
+
 
 
 namespace Controllers;
@@ -9,7 +9,7 @@ namespace Controllers;
 public class AuthenticationController : Controller
 {
     [HttpGet("~/signin")]
-    public async Task<IActionResult> SignIn() => View("SignIn", await HttpContextExtensions.GetExternalProvidersAsync(HttpContext));
+    public async Task<IActionResult> SignIn() => View("SignIn", await DoctorCeo.Extensions.HttpContextExtensions.GetExternalProvidersAsync(HttpContext));
 
     [HttpPost("~/signin")]
     public async Task<IActionResult> SignIn([FromForm] string provider)
@@ -21,7 +21,7 @@ public class AuthenticationController : Controller
             return BadRequest();
         }
 
-        if (!await HttpContextExtensions.IsProviderSupportedAsync(HttpContext, provider))
+        if (!await DoctorCeo.Extensions.HttpContextExtensions.IsProviderSupportedAsync(HttpContext, provider))
         {
             return BadRequest();
         }
@@ -29,7 +29,7 @@ public class AuthenticationController : Controller
         // Instruct the middleware corresponding to the requested external identity
         // provider to redirect the user agent to its own authorization endpoint.
         // Note: the authenticationScheme parameter must match the value configured in Startup.cs
-        return Challenge(new AuthenticationProperties { RedirectUri = "https://doctorceo.online/#portfolio" }, provider);
+        return Challenge(new AuthenticationProperties { RedirectUri = "/" }, provider);
     }
 
     [HttpGet("~/signout")]
@@ -39,7 +39,7 @@ public class AuthenticationController : Controller
         // Instruct the cookies middleware to delete the local cookie created
         // when the user agent is redirected from the external identity provider
         // after a successful authentication flow (e.g Google or Facebook).
-        return SignOut(new AuthenticationProperties { RedirectUri = "https://doctorceo.online/#portfolio" },
+        return SignOut(new AuthenticationProperties { RedirectUri = "/" },
             CookieAuthenticationDefaults.AuthenticationScheme);
     }
 }
