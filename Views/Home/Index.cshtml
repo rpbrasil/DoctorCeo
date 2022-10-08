@@ -1276,18 +1276,31 @@
 					<h2 style="color:white">Login</h2>
 				</div>
 				<div class="modal-body">
-					<ul class="">
-						<li><a style="padding:10px;" class="btn-block btn-primary" href="#" id="chkLinkedIn"><i
-									class="icon-linkedin"></i> LinkedIn</a></li>
-						<li><a style="padding:10px;" class="btn-block btn-primary" href="#" id="chkFacebook"><i
-									class="icon-facebook"></i> Facebook</a></li>
-						<li><a style="padding:10px;" class="btn-block btn-primary" href="#" id="chkGoogle"><i
-									class="icon-gplus"></i> Google</a></li>
-						<li><a style="padding:10px;" class="btn-block btn-primary" href="#" id="chkTwitter"><i
-									class="icon-twitter"></i> Twitter</a></li>
-						<li><a style="padding:10px;" class="btn-block btn-primary" href="#" id="chkAmazon"><i
-									class="icon-amazon"></i> Amazon</a></li>
-					</ul>
+					<form action="/signin" method="post">
+						<input type="hidden" name="Provider" value="LinkedIn" />
+						<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
+								class="icon-linkedin"></i> LinkedIn</button>
+					</form>
+					<form action="/signin" method="post">
+						<input type="hidden" name="Provider" value="Facebook" />
+						<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
+								class="icon-facebook"></i> Facebook</button>
+					</form>
+					<form action="/signin" method="post">
+						<input type="hidden" name="Provider" value="Google" />
+						<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
+								class="icon-gplus"></i> Google</button>
+					</form>
+					<form action="/signin" method="post">
+						<input type="hidden" name="Provider" value="Twitter" />
+						<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
+								class="icon-twitter"></i> Twitter</button>
+					</form>
+					<form action="/signin" method="post">
+						<input type="hidden" name="Provider" value="Amazon" />
+						<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
+								class="icon-amazon"></i> Amazon</button>
+					</form>
 				</div>
 				<div class="modal-footer">
 					<h3 style="color:white">Escolha seu provedor</h3>

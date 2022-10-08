@@ -1,3 +1,5 @@
+// *See https://github.com/aspnet-contrib/AspNet.Security.OAuth.Provider
+
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -7,25 +9,21 @@ namespace DoctorCeo.Controllers;
 
 public class AuthController : Controller
 {
-    [EnableCors("AllowSpecificOrigins")]
+    
     [HttpGet("~/signin")]
     public async Task<IActionResult> SignIn() => View("SignIn", await DoctorCeo.Extensions.HttpContextExtensions.GetExternalProvidersAsync(HttpContext));
 
-    [EnableCors("AllowSpecificOrigins")]
+    // [EnableCors("AllowSpecificOrigins")]
     [HttpPost("~/signin")]
     public async Task<IActionResult> SignIn([FromForm] string provider)
     {
-        // Note: the "provider" parameter corresponds to the external
-        // authentication provider choosen by the user agent.
         if (!string.IsNullOrWhiteSpace(provider))
         {
             if (!await DoctorCeo.Extensions.HttpContextExtensions.IsProviderSupportedAsync(HttpContext, provider))
             {
                 return BadRequest();
             }
-            // Instruct the middleware corresponding to the requested external identity
-            // provider to redirect the user agent to its own authorization endpoint.
-            // Note: the authenticationScheme parameter must match the value configured in Startup.cs
+            
             return Challenge(new AuthenticationProperties { RedirectUri = "/" }, provider);
         }
         return BadRequest();
