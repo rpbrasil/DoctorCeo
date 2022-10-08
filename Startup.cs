@@ -32,24 +32,19 @@ namespace DoctorCeo
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var allowOrigins = "AllowSpecificOrigins";
             services.AddRouting();
             services.AddRazorPages();
             services.AddControllersWithViews();
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowSpecificOrigins", policy => 
-                {
-                    policy.WithOrigins("https://www.linkedin.com","https://www.facebook.com","https://www.google.com","https://www.twitter.com","https://www.amazon.com").AllowAnyHeader()
-                                .AllowAnyMethod();
-                });
-            });
+                options.AddPolicy(name: allowOrigins,
+                   policy =>
+                   {
+                       policy.WithOrigins("https://localhost:7222/#", "https://doctorceo.azurewebsites.net").AllowAnyHeader().AllowAnyMethod();
 
-            if (string.IsNullOrEmpty(Configuration["Facebook:ClientId"]))
-            {
-                // User-Secrets: https://docs.asp.net/en/latest/security/app-secrets.html
-                // See below for registration instructions for each provider.
-                throw new InvalidOperationException("User secrets must be configured for each authentication provider.");
-            }
+                   });
+            });
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(o =>
@@ -115,152 +110,6 @@ namespace DoctorCeo
                     o.Fields.Add("postal_code");
                 });
         }
-        /* Azure AD app model v2 has restrictions that prevent the use of plain HTTP for redirect URLs.
-           Therefore, to authenticate through microsoft accounts, try out the sample using the following URL:
-           https://localhost:44318/
-        */
-        // You must first create an app with Microsoft Account and add its ID and Secret to your user-secrets.
-        // https://azure.microsoft.com/en-us/documentation/articles/active-directory-v2-app-registration/
-        // https://apps.dev.microsoft.com/
-
-        // MICROSOFT
-        //         .AddMicrosoftAccount(o =>
-        //         {
-        //     o.ClientId = Configuration["microsoftaccount:Clientid"];
-        //     o.ClientSecret = Configuration["microsoftaccount:Clientsecret"];
-        //     o.SaveTokens = true;
-        //     o.Scope.Add("offline_access");
-        //     o.Events = new OAuthEvents()
-        //     {
-        //         OnRemoteFailure = HandleOnRemoteFailure
-        //     };
-        // })
-        // You must first create an app with GitHub and add its ID and Secret to your user-secrets.
-        // https://github.com/settings/applications/
-        // https://docs.github.com/en/developers/apps/authorizing-oauth-apps
-        //         .AddOAuth("GitHub", "Github", o =>
-        //         {
-        //     o.ClientId = Configuration["GitHub:ClientId"];
-        //     o.ClientSecret = Configuration["GitHub:ClientSecret"];
-        //     o.CallbackPath = new PathString("/signin-github");
-        //     o.AuthorizationEndpoint = "https://github.com/login/oauth/authorize";
-        //     o.TokenEndpoint = "https://github.com/login/oauth/access_token";
-        //     o.UserInformationEndpoint = "https://api.github.com/user";
-        //     o.ClaimsIssuer = "OAuth2-Github";
-        //     o.SaveTokens = true;
-        //     // Retrieving user information is unique to each provider.
-        //     o.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "id");
-        //     o.ClaimActions.MapJsonKey(ClaimTypes.Name, "login");
-        //     o.ClaimActions.MapJsonKey("urn:github:name", "name");
-        //     o.ClaimActions.MapJsonKey(ClaimTypes.Email, "email", ClaimValueTypes.Email);
-        //     o.ClaimActions.MapJsonKey("urn:github:url", "url");
-        //     o.Events = new OAuthEvents
-        //     {
-        //         OnRemoteFailure = HandleOnRemoteFailure,
-        //         OnCreatingTicket = async context =>
-        //         {
-        //             // Get the GitHub user
-        //             var request = new HttpRequestMessage(HttpMethod.Get, context.Options.UserInformationEndpoint);
-        //             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", context.AccessToken);
-        //             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-        //             var response = await context.Backchannel.SendAsync(request, context.HttpContext.RequestAborted);
-        //             response.EnsureSuccessStatusCode();
-
-        //             using (var user = JsonDocument.Parse(await response.Content.ReadAsStringAsync()))
-        //             {
-        //                 context.RunClaimActions(user.RootElement);
-        //             }
-        //         }
-        //     };
-        // })
-        //         // You must first create an app with GitHub and add its ID and Secret to your user-secrets.
-        //         // https://github.com/settings/applications/
-        //         // https://docs.github.com/en/developers/apps/authorizing-oauth-apps
-        //         .AddOAuth("GitHub-AccessToken", "GitHub AccessToken only", o =>
-        //         {
-        //     o.ClientId = Configuration["github-token:Clientid"];
-        //     o.ClientSecret = Configuration["github-token:Clientsecret"];
-        //     o.CallbackPath = new PathString("/signin-github-token");
-        //     o.AuthorizationEndpoint = "https://github.com/login/oauth/authorize";
-        //     o.TokenEndpoint = "https://github.com/login/oauth/access_token";
-        //     o.SaveTokens = true;
-        //     o.Events = new OAuthEvents()
-        //     {
-        //         OnRemoteFailure = HandleOnRemoteFailure
-        //     };
-        // })
-        // Identity --- https://demo.identityserver.io/
-        // https://github.com/IdentityServer/IdentityServer4.Demo/blob/master/src/IdentityServer4Demo/Config.cs
-        // .AddOAuth("IdentityServer", "Identity Server", o =>
-        // {
-        //     o.ClientId = "interactive.public";
-        //     o.ClientSecret = "secret";
-        //     o.CallbackPath = new PathString("/signin-identityserver");
-        //     o.AuthorizationEndpoint = "https://demo.identityserver.io/connect/authorize";
-        //     o.TokenEndpoint = "https://demo.identityserver.io/connect/token";
-        //     o.UserInformationEndpoint = "https://demo.identityserver.io/connect/userinfo";
-        //     o.ClaimsIssuer = "IdentityServer";
-        //     o.SaveTokens = true;
-        //     o.UsePkce = true;
-        //     // Retrieving user information is unique to each provider.
-        //     o.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "sub");
-        //     o.ClaimActions.MapJsonKey(ClaimTypes.Name, "name");
-        //     o.ClaimActions.MapJsonKey(ClaimTypes.Email, "email", ClaimValueTypes.Email);
-        //     o.ClaimActions.MapJsonKey(ClaimTypes.GivenName, "given_name");
-        //     o.ClaimActions.MapJsonKey(ClaimTypes.Surname, "family_name");
-        //     o.ClaimActions.MapJsonKey("email_verified", "email_verified");
-        //     o.ClaimActions.MapJsonKey(ClaimTypes.Uri, "website");
-        //     o.Scope.Add("openid");
-        //     o.Scope.Add("profile");
-        //     o.Scope.Add("email");
-        //     o.Scope.Add("offline_access");
-        //     o.Events = new OAuthEvents
-        //     {
-        //         OnRemoteFailure = HandleOnRemoteFailure,
-        //         OnCreatingTicket = async context =>
-        //         {
-        //             // Get the user
-        //             var request = new HttpRequestMessage(HttpMethod.Get, context.Options.UserInformationEndpoint);
-        //             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", context.AccessToken);
-        //             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-        //             var response = await context.Backchannel.SendAsync(request, context.HttpContext.RequestAborted);
-        //             response.EnsureSuccessStatusCode();
-
-        //             using (var user = JsonDocument.Parse(await response.Content.ReadAsStringAsync()))
-        //             {
-        //                 context.RunClaimActions(user.RootElement);
-        //             }
-        //         }
-        //     };
-        // });
-
-
-        private async Task HandleOnRemoteFailure(RemoteFailureContext context)
-        {
-            context.Response.StatusCode = 500;
-            context.Response.ContentType = "text/html";
-            await context.Response.WriteAsync("<html><body>");
-            await context.Response.WriteAsync("A remote failure has occurred: <br>" +
-                context.Failure.Message.Split(Environment.NewLine).Select(s => HtmlEncoder.Default.Encode(s) + "<br>").Aggregate((s1, s2) => s1 + s2));
-
-            if (context.Properties != null)
-            {
-                await context.Response.WriteAsync("Properties:<br>");
-                foreach (var pair in context.Properties.Items)
-                {
-                    await context.Response.WriteAsync($"-{HtmlEncoder.Default.Encode(pair.Key)}={HtmlEncoder.Default.Encode(pair.Value)}<br>");
-                }
-            }
-
-            await context.Response.WriteAsync("<a href=\"/\">Home</a>");
-            await context.Response.WriteAsync("</body></html>");
-
-            // context.Response.Redirect("/error?FailureMessage=" + UrlEncoder.Default.Encode(context.Failure.Message));
-
-            context.HandleResponse();
-        }
 
         public void Configure(IApplicationBuilder app)
         {
@@ -280,14 +129,17 @@ namespace DoctorCeo
             app.UseHsts();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            
             app.UseRouting();
+            // after the UseRouting method and before the UseAuthorization method.
+            app.UseCors("AllowSpecificOrigins");
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseCors();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
             });
+
             // Choose an authentication type
             app.Map("/signin", signinApp =>
             {
@@ -491,6 +343,8 @@ namespace DoctorCeo
                 });
             });
 
+
+
             app.Run(async context =>
             {
                 // Setting DefaultAuthenticateScheme causes User to be set
@@ -537,6 +391,31 @@ namespace DoctorCeo
             });
         }
 
+        private async Task HandleOnRemoteFailure(RemoteFailureContext context)
+        {
+            context.Response.StatusCode = 500;
+            context.Response.ContentType = "text/html";
+            await context.Response.WriteAsync("<html><body>");
+            await context.Response.WriteAsync("A remote failure has occurred: <br>" +
+                context.Failure.Message.Split(Environment.NewLine).Select(s => HtmlEncoder.Default.Encode(s) + "<br>").Aggregate((s1, s2) => s1 + s2));
+
+            if (context.Properties != null)
+            {
+                await context.Response.WriteAsync("Properties:<br>");
+                foreach (var pair in context.Properties.Items)
+                {
+                    await context.Response.WriteAsync($"-{HtmlEncoder.Default.Encode(pair.Key)}={HtmlEncoder.Default.Encode(pair.Value)}<br>");
+                }
+            }
+
+            await context.Response.WriteAsync("<a href=\"/\">Home</a>");
+            await context.Response.WriteAsync("</body></html>");
+
+            // context.Response.Redirect("/error?FailureMessage=" + UrlEncoder.Default.Encode(context.Failure.Message));
+
+            context.HandleResponse();
+        }
+
         private Task<OAuthOptions> GetOAuthOptionsAsync(HttpContext context, string currentAuthType)
         {
             if (string.Equals(GoogleDefaults.AuthenticationScheme, currentAuthType))
@@ -562,10 +441,6 @@ namespace DoctorCeo
             else if (string.Equals(AmazonAuthenticationDefaults.AuthenticationScheme, currentAuthType))
             {
                 return Task.FromResult<OAuthOptions>(context.RequestServices.GetRequiredService<IOptionsMonitor<AmazonAuthenticationOptions>>().Get(currentAuthType));
-            }
-            else if (string.Equals("IdentityServer", currentAuthType))
-            {
-                return Task.FromResult<OAuthOptions>(context.RequestServices.GetRequiredService<IOptionsMonitor<OAuthOptions>>().Get(currentAuthType));
             }
 
             throw new NotImplementedException(currentAuthType);

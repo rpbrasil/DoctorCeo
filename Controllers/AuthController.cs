@@ -7,6 +7,7 @@ namespace DoctorCeo.Controllers;
 
 public class AuthController : Controller
 {
+    [EnableCors("AllowSpecificOrigins")]
     [HttpGet("~/signin")]
     public async Task<IActionResult> SignIn() => View("SignIn", await DoctorCeo.Extensions.HttpContextExtensions.GetExternalProvidersAsync(HttpContext));
 
