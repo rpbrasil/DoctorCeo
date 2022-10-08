@@ -1379,56 +1379,7 @@
 				});
 			} else {
 				// username = prompt("Please enter your name:", "");
-				$("#chkLinkedIn").click(function () {
-					$.ajax({
-						type: "POST",
-						url: "/signin",
-						crossDomain: true,
-						headers: { 'Access-Control-Allow-Origin': '*' },
-						data: { provider: "LinkedIn" },
-						contentType: "application/x-www-form-urlencoded"
-					});
-				});
-				$("#chkFacebook").click(function () {
-					$.ajax({
-						type: "POST",
-						url: "/signin",
-						crossDomain: true,
-						headers: { 'Access-Control-Allow-Origin': '*' },
-						data: { provider: "Facebook" },
-						contentType: "application/x-www-form-urlencoded"
-					});
-				});
-				$("#chkGoogle").click(function () {
-					$.ajax({
-						type: "POST",
-						url: "/signin",
-						crossDomain: true,
-						headers: { 'Access-Control-Allow-Origin': '*' },
-						data: { provider: "Google" },
-						contentType: "application/x-www-form-urlencoded"
-					});
-				});
-				$("#chkTwitter").click(function () {
-					$.ajax({
-						type: "POST",
-						url: "/signin",
-						crossDomain: true,
-						headers: { 'Access-Control-Allow-Origin': '*' },
-						data: { provider: "Twitter" },
-						contentType: "application/x-www-form-urlencoded"
-					});
-				});
-				$("#chkAmazon").click(function () {
-					$.ajax({
-						type: "POST",
-						url: "/signin",
-						crossDomain: true,
-						headers: { 'Access-Control-Allow-Origin': '*' },
-						data: { provider: "Amazon" },
-						contentType: "application/x-www-form-urlencoded"
-					});
-				});
+				
 				modal.style.display = "block";
 				if (username != "" && username != null) {
 					setCookie("username", username, 365);
