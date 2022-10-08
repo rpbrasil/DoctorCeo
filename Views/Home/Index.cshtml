@@ -1367,27 +1367,27 @@
 			} else {
 				// username = prompt("Please enter your name:", "");
 				$("#chkLinkedIn").click(function () {
-					$.get("/signin?authscheme=LinkedIn", function (data, status) {
+					$.post("/signin", {provider:"Linkedin"}, function (data, status) {
 						alert("Data: " + data + "\nStatus: " + status);
 					});
 				});
 				$("#chkFacebook").click(function () {
-					$.post("controller/signin?authscheme=Facebook", function (data, status) {
+					$.post("/signin", { provider: "Facebook" }, function (data, status) {
 						alert("Data: " + data + "\nStatus: " + status);
 					});
 				});
 				$("#chkGoogle").click(function () {
-					$.post("controller/signin?authscheme=Google", function (data, status) {
+					$.post("/signin", { provider: "Google" }, function (data, status) {
 						alert("Data: " + data + "\nStatus: " + status);
 					});
 				});
 				$("#chkTwitter").click(function () {
-					$.post("controller/signin?authscheme=Twitter", function (data, status) {
+					$.post("/signin", { provider: "Twitter" }, function (data, status) {
 						alert("Data: " + data + "\nStatus: " + status);
 					});
 				});
 				$("#chkAmazon").click(function () {
-					$.post("controller/signin?authscheme=Amazon", function (data, status) {
+					$.post("/signin", { provider: "Amazon"}, function (data, status) {
 						alert("Data: " + data + "\nStatus: " + status);
 					});
 				});
