@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
 </head>
 <style>
 	html {
@@ -157,26 +156,6 @@
 		<!-- End preloader inner -->
 	</div>
 	<!-- End preloader-->
-
-
-	@* @if (User?.Identity?.IsAuthenticated ?? false)
-		{
-		<h1>Welcome, @User.Identity.Name</h1>
-		<p>
-
-		@foreach (var claim in Context.User.Claims)
-		{
-		<div><code>@claim.Type</code>: <strong>@claim.Value</strong></div>
-		}
-		</p>
-		<a class="btn btn-lg btn-danger" href="/signout?returnUrl=%2F">Sign out</a>
-		}
-		else
-		{
-		<h1>Welcome, anonymous</h1>
-		<a class="btn btn-lg btn-success" href="/signin?returnUrl=%2F">Sign in</a>
-		} *@
-
 	<!--Wrapper-->
 	<div id="wrapper" class="mt-150 mb-150">
 		<!--Container-->
@@ -1299,17 +1278,15 @@
 				<div class="modal-body">
 					<ul class="">
 						<li><a style="padding:10px;" class="btn-block btn-primary"
-								href="https://doctorceo.azurewebsites.net/controller/signin?authscheme=LinkedIn"><i
-									class="icon-linkedin"></i> LinkedIn</a></li>
+								href="#" id="chkLinkedIn"><i class="icon-linkedin"></i> LinkedIn</a></li>
 						<li><a style="padding:10px;" class="btn-block btn-primary"
-								href="https://doctorceo.azurewebsites.net/controller/signin?authscheme=Facebook"><i class="icon-facebook"></i> Facebook</a></li>
+								href="#" id="chkFacebook"><i class="icon-facebook"></i> Facebook</a></li>
 						<li><a style="padding:10px;" class="btn-block btn-primary"
-								href="https://doctorceo.azurewebsites.net/controller/signin?authscheme=Google"><i
-									class="icon-gplus"></i> Google</a></li>
+								href="#" id="chkGoogle"><i class="icon-gplus"></i> Google</a></li>
 						<li><a style="padding:10px;" class="btn-block btn-primary"
-								href="https://doctorceo.azurewebsites.net/controller/signin?authscheme=Twitter"><i class="icon-twitter"></i> Twitter</a></li>
+								href="#" id="chkTwitter"><i class="icon-twitter"></i> Twitter</a></li>
 						<li><a style="padding:10px;" class="btn-block btn-primary"
-								href="https://doctorceo.azurewebsites.net/controller/signin?authscheme=Amazon"><i class="icon-amazon"></i> Amazon</a></li>
+								href="#" id="chkAmazon"><i class="icon-amazon"></i> Amazon</a></li>
 					</ul>
 				</div>
 				<div class="modal-footer">
@@ -1389,6 +1366,31 @@
 				});
 			} else {
 				// username = prompt("Please enter your name:", "");
+				$("#chkLinkedIn").click(function () {
+					$.get("/signin?authscheme=LinkedIn", function (data, status) {
+						alert("Data: " + data + "\nStatus: " + status);
+					});
+				});
+				$("#chkFacebook").click(function () {
+					$.post("controller/signin?authscheme=Facebook", function (data, status) {
+						alert("Data: " + data + "\nStatus: " + status);
+					});
+				});
+				$("#chkGoogle").click(function () {
+					$.post("controller/signin?authscheme=Google", function (data, status) {
+						alert("Data: " + data + "\nStatus: " + status);
+					});
+				});
+				$("#chkTwitter").click(function () {
+					$.post("controller/signin?authscheme=Twitter", function (data, status) {
+						alert("Data: " + data + "\nStatus: " + status);
+					});
+				});
+				$("#chkAmazon").click(function () {
+					$.post("controller/signin?authscheme=Amazon", function (data, status) {
+						alert("Data: " + data + "\nStatus: " + status);
+					});
+				});
 				modal.style.display = "block";
 				if (username != "" && username != null) {
 					setCookie("username", username, 365);

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pYxj6pwRWQTMtjrFDG+g82c/RM/XLksF857KPUkw/Fc=",
+  "Hash": "jxNNKXSD4TDaQykCcBmiiKCftuhuV+DTgrn3Kr2ouLg=",
   "Source": "DoctorCeo",
   "BasePath": "_content/DoctorCeo",
   "Mode": "Default",
@@ -270,23 +270,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\eyeIcon"
-    },
-    {
-      "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\faviconaaa.ico",
-      "SourceId": "DoctorCeo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\",
-      "BasePath": "_content/DoctorCeo",
-      "RelativePath": "faviconaaa.ico",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\faviconaaa.ico"
     },
     {
       "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\font\\fontello.eot",
