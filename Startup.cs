@@ -35,6 +35,14 @@ namespace DoctorCeo
             services.AddRouting();
             services.AddRazorPages();
             services.AddControllersWithViews();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigins", policy => 
+                {
+                    policy.WithOrigins("https://www.linkedin.com","https://www.facebook.com","https://www.google.com","https://www.twitter.com","https://www.amazon.com").AllowAnyHeader()
+                                .AllowAnyMethod();
+                });
+            });
 
             if (string.IsNullOrEmpty(Configuration["Facebook:ClientId"]))
             {
@@ -275,6 +283,7 @@ namespace DoctorCeo
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseCors();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();

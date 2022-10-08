@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 
 namespace DoctorCeo.Controllers;
 
@@ -9,6 +10,7 @@ public class AuthController : Controller
     [HttpGet("~/signin")]
     public async Task<IActionResult> SignIn() => View("SignIn", await DoctorCeo.Extensions.HttpContextExtensions.GetExternalProvidersAsync(HttpContext));
 
+    [EnableCors("AllowSpecificOrigins")]
     [HttpPost("~/signin")]
     public async Task<IActionResult> SignIn([FromForm] string provider)
     {
