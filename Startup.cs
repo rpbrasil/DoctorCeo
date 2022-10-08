@@ -41,7 +41,7 @@ namespace DoctorCeo
                 options.AddPolicy(name: allowOrigins,
                    policy =>
                    {
-                       policy.WithOrigins("https://localhost:7222/#", "https://doctorceo.azurewebsites.net").AllowAnyHeader().AllowAnyMethod();
+                       policy.WithOrigins("https://localhost:7222/#", "https://doctorceo.azurewebsites.net").WithHeaders("Access-Control-Allow-Origin","Content-Type").AllowAnyMethod();
 
                    });
             });
@@ -132,7 +132,7 @@ namespace DoctorCeo
             
             app.UseRouting();
             // after the UseRouting method and before the UseAuthorization method.
-            app.UseCors("AllowSpecificOrigins");
+            app.UseCors();
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
