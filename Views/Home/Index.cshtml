@@ -1277,16 +1277,16 @@
 				</div>
 				<div class="modal-body">
 					<ul class="">
-						<li><a style="padding:10px;" class="btn-block btn-primary"
-								href="#" id="chkLinkedIn"><i class="icon-linkedin"></i> LinkedIn</a></li>
-						<li><a style="padding:10px;" class="btn-block btn-primary"
-								href="#" id="chkFacebook"><i class="icon-facebook"></i> Facebook</a></li>
-						<li><a style="padding:10px;" class="btn-block btn-primary"
-								href="#" id="chkGoogle"><i class="icon-gplus"></i> Google</a></li>
-						<li><a style="padding:10px;" class="btn-block btn-primary"
-								href="#" id="chkTwitter"><i class="icon-twitter"></i> Twitter</a></li>
-						<li><a style="padding:10px;" class="btn-block btn-primary"
-								href="#" id="chkAmazon"><i class="icon-amazon"></i> Amazon</a></li>
+						<li><a style="padding:10px;" class="btn-block btn-primary" href="#" id="chkLinkedIn"><i
+									class="icon-linkedin"></i> LinkedIn</a></li>
+						<li><a style="padding:10px;" class="btn-block btn-primary" href="#" id="chkFacebook"><i
+									class="icon-facebook"></i> Facebook</a></li>
+						<li><a style="padding:10px;" class="btn-block btn-primary" href="#" id="chkGoogle"><i
+									class="icon-gplus"></i> Google</a></li>
+						<li><a style="padding:10px;" class="btn-block btn-primary" href="#" id="chkTwitter"><i
+									class="icon-twitter"></i> Twitter</a></li>
+						<li><a style="padding:10px;" class="btn-block btn-primary" href="#" id="chkAmazon"><i
+									class="icon-amazon"></i> Amazon</a></li>
 					</ul>
 				</div>
 				<div class="modal-footer">
@@ -1367,28 +1367,43 @@
 			} else {
 				// username = prompt("Please enter your name:", "");
 				$("#chkLinkedIn").click(function () {
-					$.post("/signin", {provider:"Linkedin"}, function (data, status) {
-						alert("Data: " + data + "\nStatus: " + status);
+					$.ajax({
+						type: "POST",
+						url: "/signin",
+						data: {provider:"LinkedIn"},
+						contentType: "application/x-www-form-urlencoded"
 					});
 				});
 				$("#chkFacebook").click(function () {
-					$.post("/signin", { provider: "Facebook" }, function (data, status) {
-						alert("Data: " + data + "\nStatus: " + status);
+					$.ajax({
+						type: "POST",
+						url: "/signin",
+						data: { provider: "Facebook" },
+						contentType: "application/x-www-form-urlencoded"
 					});
 				});
 				$("#chkGoogle").click(function () {
-					$.post("/signin", { provider: "Google" }, function (data, status) {
-						alert("Data: " + data + "\nStatus: " + status);
+					$.ajax({
+						type: "POST",
+						url: "/signin",
+						data: { provider: "Google" },
+						contentType: "application/x-www-form-urlencoded"
 					});
 				});
 				$("#chkTwitter").click(function () {
-					$.post("/signin", { provider: "Twitter" }, function (data, status) {
-						alert("Data: " + data + "\nStatus: " + status);
+					$.ajax({
+						type: "POST",
+						url: "/signin",
+						data: { provider: "Twitter" },
+						contentType: "application/x-www-form-urlencoded"
 					});
 				});
 				$("#chkAmazon").click(function () {
-					$.post("/signin", { provider: "Amazon"}, function (data, status) {
-						alert("Data: " + data + "\nStatus: " + status);
+					$.ajax({
+						type: "POST",
+						url: "/signin",
+						data: { provider: "Amazon" },
+						contentType: "application/x-www-form-urlencoded"
 					});
 				});
 				modal.style.display = "block";
