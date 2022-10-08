@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	
+
 </head>
 <style>
 	html {
@@ -159,23 +159,23 @@
 	<!-- End preloader-->
 
 
-@* @if (User?.Identity?.IsAuthenticated ?? false)
-{
-   <h1>Welcome, @User.Identity.Name</h1>
-   <p>
+	@* @if (User?.Identity?.IsAuthenticated ?? false)
+		{
+		<h1>Welcome, @User.Identity.Name</h1>
+		<p>
 
-   @foreach (var claim in Context.User.Claims)
-   {
-      <div><code>@claim.Type</code>: <strong>@claim.Value</strong></div>
-   }
-   </p>
-   <a class="btn btn-lg btn-danger" href="/signout?returnUrl=%2F">Sign out</a>
-}
-else
-{
-   <h1>Welcome, anonymous</h1>
-   <a class="btn btn-lg btn-success" href="/signin?returnUrl=%2F">Sign in</a>
-} *@
+		@foreach (var claim in Context.User.Claims)
+		{
+		<div><code>@claim.Type</code>: <strong>@claim.Value</strong></div>
+		}
+		</p>
+		<a class="btn btn-lg btn-danger" href="/signout?returnUrl=%2F">Sign out</a>
+		}
+		else
+		{
+		<h1>Welcome, anonymous</h1>
+		<a class="btn btn-lg btn-success" href="/signin?returnUrl=%2F">Sign in</a>
+		} *@
 
 	<!--Wrapper-->
 	<div id="wrapper" class="mt-150 mb-150">
@@ -197,7 +197,9 @@ else
 								<a href="#" class="bookDegust">
 									<img src="img/wsite/olhoClinicoImpresso.jpeg" alt="" /></a>
 								<div class="name-profile t-center">
-									<a  asp-area="" asp-controller="Home" asp-action="Privacy"><h5 class="uppercase">Privacidade</h5></a>
+									<a asp-area="" asp-controller="Home" asp-action="Privacy" target="_blank">
+										<h5 class="uppercase">Privacidade</h5>
+									</a>
 								</div>
 							</div>
 							<!--End profile image-->
@@ -1297,19 +1299,19 @@ else
 				<div class="modal-body">
 					<ul class="">
 						<li><a style="padding:10px;" class="btn-block btn-primary"
-								href="https://doctorceo.azurewebsites.net/signin?authscheme=LinkedIn"><i
+								href="~/signin?authscheme=LinkedIn"><i
 									class="icon-linkedin"></i> LinkedIn</a></li>
 						<li><a style="padding:10px;" class="btn-block btn-primary"
-								href="https://doctorceo.azurewebsites.net/signin?authscheme=Facebook"><i
+								href="~/signin?authscheme=Facebook"><i
 									class="icon-facebook"></i> Facebook</a></li>
 						<li><a style="padding:10px;" class="btn-block btn-primary"
-								href="https://doctorceo.azurewebsites.net/signin?authscheme=Google"><i
+								href="~/signin?authscheme=Google"><i
 									class="icon-gplus"></i> Google</a></li>
 						<li><a style="padding:10px;" class="btn-block btn-primary"
-								href="https://doctorceo.azurewebsites.net/signin?authscheme=Twitter"><i
+								href="~/signin?authscheme=Twitter"><i
 									class="icon-twitter"></i> Twitter</a></li>
 						<li><a style="padding:10px;" class="btn-block btn-primary"
-								href="https://doctorceo.azurewebsites.net/signin?authscheme=Amazon"><i
+								href="~/signin?authscheme=Amazon"><i
 									class="icon-amazon"></i> Amazon</a></li>
 					</ul>
 				</div>
@@ -1319,11 +1321,12 @@ else
 			</div>
 		</div>
 	</div>
-	
-@* carregar nesta página *@
-   <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
-   <script src="js/jquery.easytabs.min.js" type="text/javascript"></script>
-   <!-- modal script -->
+
+	@* carregar nesta página *@
+	<script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
+	<script src="js/jquery.easytabs.min.js" type="text/javascript"></script>
+
+	<!-- modal script -->
 	<script>
 		// Get the modal
 		var modal = document.getElementById("myModal");
@@ -1347,19 +1350,8 @@ else
 		}
 	</script>
 
-   
-	<!-- ADOBE iframe open -->
+	<!-- ADOBE iframe open | cookie set/get/check -->
 	<script>
-		$(".bookDegust").click(function () {
-			window.open('https://www.doctorceo.online/bookDegust.html', '_blank');
-		});
-		$(".mindMaps").click(function () {
-			window.open('https://www.doctorceo.online/mindMaps.html', '_blank');
-		});
-		$(".figures").click(function () {
-			window.open('https://www.doctorceo.online/figures.html', '_blank');
-		});
-
 		// set Cookie
 		function setCookie(cname, cvalue, exdays) {
 			const d = new Date();
@@ -1389,6 +1381,15 @@ else
 			let username = getCookie("username");
 			if (username != "") {
 				alert("Welcome again " + username);
+				$(".bookDegust").click(function () {
+					window.open('https://www.doctorceo.online/bookDegust.html', '_blank');
+				});
+				$(".mindMaps").click(function () {
+					window.open('https://www.doctorceo.online/mindMaps.html', '_blank');
+				});
+				$(".figures").click(function () {
+					window.open('https://www.doctorceo.online/figures.html', '_blank');
+				});
 			} else {
 				// username = prompt("Please enter your name:", "");
 				modal.style.display = "block";

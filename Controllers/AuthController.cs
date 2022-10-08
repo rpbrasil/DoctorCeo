@@ -2,11 +2,9 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 
+namespace DoctorCeo.Controllers;
 
-
-namespace Controllers;
-
-public class AuthenticationController : Controller
+public class AuthController : Controller
 {
     [HttpGet("~/signin")]
     public async Task<IActionResult> SignIn() => View("SignIn", await DoctorCeo.Extensions.HttpContextExtensions.GetExternalProvidersAsync(HttpContext));
@@ -16,20 +14,18 @@ public class AuthenticationController : Controller
     {
         // Note: the "provider" parameter corresponds to the external
         // authentication provider choosen by the user agent.
-        if (string.IsNullOrWhiteSpace(provider))
+        if (!string.IsNullOrWhiteSpace(provider))
         {
-            return BadRequest();
+            if (!await DoctorCeo.Extensions.HttpContextExtensions.IsProviderSupportedAsync(HttpContext, provider))
+            {
+                return BadRequest();
+            }
+            // Instruct the middleware corresponding to the requested external identity
+            // provider to redirect the user agent to its own authorization endpoint.
+            // Note: the authenticationScheme parameter must match the value configured in Startup.cs
+            return Challenge(new AuthenticationProperties { RedirectUri = "/" }, provider);
         }
-
-        if (!await DoctorCeo.Extensions.HttpContextExtensions.IsProviderSupportedAsync(HttpContext, provider))
-        {
-            return BadRequest();
-        }
-
-        // Instruct the middleware corresponding to the requested external identity
-        // provider to redirect the user agent to its own authorization endpoint.
-        // Note: the authenticationScheme parameter must match the value configured in Startup.cs
-        return Challenge(new AuthenticationProperties { RedirectUri = "/" }, provider);
+        return BadRequest();
     }
 
     [HttpGet("~/signout")]
