@@ -1175,49 +1175,36 @@
 												</div>
 												@if (User?.Identity?.IsAuthenticated ?? false)
 												{
-													@foreach (var claim in Context.User.Claims)
-													{
-
-														<form id="emailForm1" class="contact-form" method="" action="">
-															<!--Input columns-->
+													<form id="emailForm1" class="contact-form" method="" action="">
+														<!--Input columns-->
 													<div class="input-columns clearfix">
-																<div class="column1">
-																	<div class="column-inner">
-																		<input type="text" placeholder="Nome"
+															<div class="column1">
+																<div class="column-inner">
+																	<input type="text" placeholder="Nome"
 																	value="@User.Identity.Name" id="name" name="name" />
-																	</div>
 																</div>
-																<!--Column-->
+															</div>
+															<!--Column-->
 														<div class="column2">
-
-																	<div class="column-inner">
-																		if(@claim.Type.Contains("emailaddress"))
-																		{
-																		<input type="text" placeholder="Email"
-																	value="@claim.Value" id="email" name="email" />
-																		}
-																		else
-																		{
-																		<input type="text" placeholder="Email" value=""
-																	id="email" name="email" />}
-																	</div>
-
+																<div class="column-inner">
+																	<input type="text" placeholder="Email" value=""
+																	id="email" name="email" />
 																</div>
-																<!--End column-->
+															</div>
+															<!--End column-->
 													</div>
-															<!--End input columns-->
+														<!--End input columns-->
 													<input type="text" placeholder="Fone" value="" id="phone"
 														name="phone" />
-															<textarea name="message" placeholder="Mensagem" id="message"
+														<textarea name="message" placeholder="Mensagem" id="message"
 														cols="45" rows="7"></textarea>
-															<div id="submit">
-																<button type="button" id="sendEmail" class="btn-block but"
+														<div id="submit">
+															<button type="button" id="sendEmail" class="btn-block but"
 															onclick="SendEmail();">
-																	Enviar
-																</button>
-															</div>
-														</form>
-													}
+																Enviar
+															</button>
+														</div>
+													</form>
 												}
 												else
 												{
@@ -1622,6 +1609,8 @@
 			$(".modal-dialog").css({ width: "90%", left: "47%" });
 		}
 	</script>
+
+	@* @foreach (var claim in Context.User.Claims){if(@claim.Type.Contains("emailaddress")){ *@
 
 	<!-- Google analytics -->
 
