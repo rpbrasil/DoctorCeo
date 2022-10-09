@@ -1269,7 +1269,38 @@
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
 		<div class="modal-dialog">
-			<!-- Modal content -->
+			
+@if (User?.Identity?.IsAuthenticated ?? false)
+    {
+        <h1>Welcome, @User.Identity.Name</h1>
+
+<!-- Modal content true-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2 style="color:white">@DateTime.Now</h2>
+				</div>
+				<div class="modal-body">
+						<h1>Olá, @User.Identity.Name</h1>
+				</div>
+				<div class="modal-footer">
+					<h3 style="color:white">Bem-vindo de volta !</h3>
+				</div>
+			</div>
+
+        <p>
+            @foreach (var claim in Context.User.Claims)
+            {
+                <div><code>@claim.Type</code>: <strong>@claim.Value</strong></div>
+            }
+        </p>
+
+        <a class="btn btn-lg btn-danger" href="/signout?returnUrl=%2F">Sign out</a>
+    }
+
+    else
+    {
+        <!-- Modal content false -->
 			<div class="modal-content">
 				<div class="modal-header">
 					<span class="close">&times;</span>
@@ -1306,6 +1337,12 @@
 					<h3 style="color:white">Escolha seu provedor</h3>
 				</div>
 			</div>
+    }
+
+			
+
+			
+
 		</div>
 	</div>
 
@@ -1381,9 +1418,9 @@
 				// userlogged = prompt("Please enter your name:", "");
 
 				modal.style.display = "block";
-				$('form').submit(function() {
-					$.getJSON("/signin",function(data,status,xhr){
-						console.log("resultado: ",data,status,xhr);
+				$('form').submit(function () {
+					$.getJSON("/signin", function (data, status, xhr) {
+						console.log("resultado: ", data, status, xhr);
 					});
 				});
 				if (userlogged != "" && userlogged != null) {
