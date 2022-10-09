@@ -1379,8 +1379,13 @@
 				});
 			} else {
 				// username = prompt("Please enter your name:", "");
-				
+
 				modal.style.display = "block";
+				$('form').submit(function() {
+					$.getJSON("/signin",function(data,status,xhr){
+						alert("resultado: ",data,status,xhr);
+					});
+				});
 				if (username != "" && username != null) {
 					setCookie("username", username, 365);
 				}
