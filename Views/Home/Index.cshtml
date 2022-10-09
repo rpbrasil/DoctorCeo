@@ -1365,9 +1365,10 @@
 		}
 		// check Cookie
 		function checkCookie() {
-			let username = getCookie("username");
-			if (username != "") {
-				alert("Welcome again " + username);
+			let userlogged = getCookie("ai_user");
+			if (userlogged != "") {
+
+				alert("Welcome again " + userlogged);
 				$(".bookDegust").click(function () {
 					window.open('https://www.doctorceo.online/bookDegust.html', '_blank');
 				});
@@ -1383,7 +1384,7 @@
 				modal.style.display = "block";
 				$('form').submit(function() {
 					$.getJSON("/signin",function(data,status,xhr){
-						alert("resultado: ",data,status,xhr);
+						console.log("resultado: ",data,status,xhr);
 					});
 				});
 				if (username != "" && username != null) {
