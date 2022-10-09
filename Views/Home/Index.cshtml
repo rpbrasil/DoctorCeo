@@ -1175,47 +1175,53 @@
 												</div>
 												@if (User?.Identity?.IsAuthenticated ?? false)
 												{
-													<form id="emailForm" class="contact-form" method="" action="">
-														<!--Input columns-->
+													@foreach (var claim in Context.User.Claims)
+													{
+
+														<form id="emailForm1" class="contact-form" method="" action="">
+															<!--Input columns-->
 													<div class="input-columns clearfix">
-															<div class="column1">
-																<div class="column-inner">
-																		<input type="text" placeholder="Nome" value="@User.Identity.Name" id="name"
-																	name="name" />
-																</div>
-															</div>
-															<!--Column-->
-														<div class="column2">
-																@foreach (var claim in Context.User.Claims)
-																{
+																<div class="column1">
 																	<div class="column-inner">
+																		<input type="text" placeholder="Nome"
+																	value="@User.Identity.Name" id="name" name="name" />
+																	</div>
+																</div>
+																<!--Column-->
+														<div class="column2">
 
+																	<div class="column-inner">
 																		if(@claim.Type.Contains("emailaddress"))
-
-
+																		{
 																		<input type="text" placeholder="Email"
 																	value="@claim.Value" id="email" name="email" />
+																		}
+																		else
+																		{
+																		<input type="text" placeholder="Email" value=""
+																	id="email" name="email" />}
 																	</div>
-																}
-															</div>
-															<!--End column-->
+
+																</div>
+																<!--End column-->
 													</div>
-														<!--End input columns-->
+															<!--End input columns-->
 													<input type="text" placeholder="Fone" value="" id="phone"
 														name="phone" />
-														<textarea name="message" placeholder="Mensagem" id="message"
+															<textarea name="message" placeholder="Mensagem" id="message"
 														cols="45" rows="7"></textarea>
-														<div id="submit">
-															<button type="button" id="sendEmail" class="btn-block but"
+															<div id="submit">
+																<button type="button" id="sendEmail" class="btn-block but"
 															onclick="SendEmail();">
-																Enviar
-															</button>
-														</div>
-													</form>
+																	Enviar
+																</button>
+															</div>
+														</form>
+													}
 												}
 												else
 												{
-													<form id="emailForm" class="contact-form" method="" action="">
+													<form id="emailForm2" class="contact-form" method="" action="">
 														<!--Input columns-->
 													<div class="input-columns clearfix">
 															<div class="column1">
@@ -1558,7 +1564,7 @@
 				$("#name").css({ border: "1px solid rgba(0,0,0,.2)" });
 				$("#email").css({ border: "1px solid rgba(0,0,0,.2)" });
 				$("#message").css({ border: "1px solid rgba(0,0,0,.2)" });
-				$("#emailForm")[0].reset();
+				$(".contact-form")[0].reset();
 				success.css("display", "block");
 				window.location.href = mailToLink;
 			}
