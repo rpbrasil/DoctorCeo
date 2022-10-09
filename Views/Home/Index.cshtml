@@ -1173,36 +1173,79 @@
 													Por gentileza, preencha os campos obrigatórios em
 													vermelho para que eu possa enviar esta mensagem.
 												</div>
-												<form id="emailForm" class="contact-form" method="" action="">
-													<!--Input columns-->
+												@if (User?.Identity?.IsAuthenticated ?? false)
+												{
+													<form id="emailForm" class="contact-form" method="" action="">
+														<!--Input columns-->
 													<div class="input-columns clearfix">
-														<div class="column1">
-															<div class="column-inner">
-																<input type="text" placeholder="Nome" value="" id="name"
+															<div class="column1">
+																<div class="column-inner">
+																		<input type="text" placeholder="Nome" value="@User.Identity.Name" id="name"
 																	name="name" />
+																</div>
 															</div>
-														</div>
-														<!--Column-->
+															<!--Column-->
 														<div class="column2">
-															<div class="column-inner">
-																<input type="text" placeholder="Email" value=""
-																	id="email" name="email" />
+																@foreach (var claim in Context.User.Claims)
+																{
+																	<div class="column-inner">
+
+																		if(@claim.Type.Contains("emailaddress"))
+
+
+																		<input type="text" placeholder="Email"
+																	value="@claim.Value" id="email" name="email" />
+																	</div>
+																}
 															</div>
-														</div>
-														<!--End column-->
+															<!--End column-->
 													</div>
-													<!--End input columns-->
+														<!--End input columns-->
 													<input type="text" placeholder="Fone" value="" id="phone"
 														name="phone" />
-													<textarea name="message" placeholder="Mensagem" id="message"
+														<textarea name="message" placeholder="Mensagem" id="message"
 														cols="45" rows="7"></textarea>
-													<div id="submit">
-														<button type="button" id="sendEmail" class="btn-block but"
+														<div id="submit">
+															<button type="button" id="sendEmail" class="btn-block but"
 															onclick="SendEmail();">
-															Enviar
-														</button>
+																Enviar
+															</button>
+														</div>
+													</form>
+												}
+												else
+												{
+													<form id="emailForm" class="contact-form" method="" action="">
+														<!--Input columns-->
+													<div class="input-columns clearfix">
+															<div class="column1">
+																<div class="column-inner">
+																	<input type="text" placeholder="Nome" value="" id="name"
+																	name="name" />
+																</div>
+															</div>
+															<!--Column-->
+														<div class="column2">
+																<div class="column-inner">
+																	<input type="text" placeholder="Email" value=""
+																	id="email" name="email" />
+																</div>
+															</div>
+															<!--End column-->
 													</div>
-												</form>
+														<!--End input columns-->
+													<input type="text" placeholder="Fone" value="" id="phone"
+														name="phone" />
+														<textarea name="message" placeholder="Mensagem" id="message"
+														cols="45" rows="7"></textarea>
+														<div id="submit">
+															<button type="button" id="sendEmail" class="btn-block but"
+															onclick="SendEmail();">
+																Enviar
+															</button>
+														</div>
+													</form>
+												}
 											</div>
 											<!--End reach-->
 										</div>
@@ -1269,79 +1312,79 @@
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
 		<div class="modal-dialog">
-			
-@if (User?.Identity?.IsAuthenticated ?? false)
-    {
-        <h1>Welcome, @User.Identity.Name</h1>
 
-<!-- Modal content true-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<span class="close">&times;</span>
-					<h2 style="color:white">@DateTime.Now</h2>
-				</div>
-				<div class="modal-body">
+			@if (User?.Identity?.IsAuthenticated ?? false)
+			{
+				<h1>Welcome, @User.Identity.Name</h1>
+
+				<!-- Modal content true-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<span class="close">&times;</span>
+						<h2 style="color:white">@DateTime.UtcNow.ToLocalTime()</h2>
+					</div>
+					<div class="modal-body">
 						<h1>Olá, @User.Identity.Name</h1>
+					</div>
+					<div class="modal-footer">
+						<h3 style="color:white">Bem-vindo(a) de volta !</h3>
+					</div>
 				</div>
-				<div class="modal-footer">
-					<h3 style="color:white">Bem-vindo de volta !</h3>
-				</div>
-			</div>
 
-        <p>
-            @foreach (var claim in Context.User.Claims)
-            {
-                <div><code>@claim.Type</code>: <strong>@claim.Value</strong></div>
-            }
-        </p>
+				<p>
+					@foreach (var claim in Context.User.Claims)
+					{
+					<div><code>@claim.Type</code>: <strong>@claim.Value</strong></div>
+					}
+				</p>
 
-        <a class="btn btn-lg btn-danger" href="/signout?returnUrl=%2F">Sign out</a>
-    }
+				<a class="btn btn-lg btn-danger" href="/signout?returnUrl=%2F">Sign out</a>
+			}
 
-    else
-    {
-        <!-- Modal content false -->
-			<div class="modal-content">
-				<div class="modal-header">
-					<span class="close">&times;</span>
-					<h2 style="color:white">Login</h2>
-				</div>
-				<div class="modal-body">
-					<form action="/signin" method="post">
-						<input type="hidden" name="Provider" value="LinkedIn" />
-						<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
+			else
+			{
+				<!-- Modal content false -->
+				<div class="modal-content">
+					<div class="modal-header">
+						<span class="close">&times;</span>
+						<h2 style="color:white">Login</h2>
+					</div>
+					<div class="modal-body">
+						<form action="/signin" method="post">
+							<input type="hidden" name="Provider" value="LinkedIn" />
+							<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
 								class="icon-linkedin"></i> LinkedIn</button>
-					</form>
-					<form action="/signin" method="post">
-						<input type="hidden" name="Provider" value="Facebook" />
-						<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
+						</form>
+						<form action="/signin" method="post">
+							<input type="hidden" name="Provider" value="Facebook" />
+							<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
 								class="icon-facebook"></i> Facebook</button>
-					</form>
-					<form action="/signin" method="post">
-						<input type="hidden" name="Provider" value="Google" />
-						<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
+						</form>
+						<form action="/signin" method="post">
+							<input type="hidden" name="Provider" value="Google" />
+							<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
 								class="icon-gplus"></i> Google</button>
-					</form>
-					<form action="/signin" method="post">
-						<input type="hidden" name="Provider" value="Twitter" />
-						<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
+						</form>
+						<form action="/signin" method="post">
+							<input type="hidden" name="Provider" value="Twitter" />
+							<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
 								class="icon-twitter"></i> Twitter</button>
-					</form>
-					<form action="/signin" method="post">
-						<input type="hidden" name="Provider" value="Amazon" />
-						<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
+						</form>
+						<form action="/signin" method="post">
+							<input type="hidden" name="Provider" value="Amazon" />
+							<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
 								class="icon-amazon"></i> Amazon</button>
-					</form>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<h3 style="color:white">Escolha seu provedor</h3>
+					</div>
 				</div>
-				<div class="modal-footer">
-					<h3 style="color:white">Escolha seu provedor</h3>
-				</div>
-			</div>
-    }
+			}
 
-			
 
-			
+
+
 
 		</div>
 	</div>
