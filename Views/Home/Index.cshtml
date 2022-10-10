@@ -586,8 +586,8 @@
 										em Medicina, Pós-graduado em Engenharia, com MBA em
 										Finanças e certificações em Tecnologia da Informação.
 										Exerceu cargos de alta gestão e prestou consultoria para
-										grandes empresas, criou produtos, serviços e registrou
-										patentes, proferiu aulas e seminários no Brasil,
+										grandes empresas. Criou produtos, serviços e registrou
+										patentes. Proferiu aulas e seminários no Brasil,
 										participou de eventos como palestrante e publicou
 										trabalhos no exterior.
 									</p>
@@ -1169,11 +1169,11 @@
 												<div id="mail_success" class="success" style="display: none">
 													Vou abrir seu servidor de email para que você possa
 													checar a mensagem antes de enviá-la.
-												</div>
+												</div><br>
 												<div id="mail_fail" class="error" style="display: none">
 													Por gentileza, preencha os campos obrigatórios em
 													vermelho para que eu possa enviar esta mensagem.
-												</div>
+												</div><br>
 												@if (User?.Identity?.IsAuthenticated ?? false)
 												{
 													<form id="emailForm1" class="contact-form" method="" action="">
@@ -1316,7 +1316,8 @@
 			@*------------------- TESTE DE USER IDENTITY ------------------- *@
 			@if (User?.Identity?.IsAuthenticated ?? false)
 			{
-				@Html.Hidden("logado", 1);
+				@Html.Hidden("logado", 1)
+				;
 				<!-- Modal content true-->
 				<div class="modal-content">
 					<div class="modal-header">
@@ -1326,15 +1327,16 @@
 					<div class="modal-body">
 						<h1>Olá, @User.Identity.Name</h1>
 					</div>
-					<div class="modal-footer">							
+					<div class="modal-footer">
 						<h3 style="color:white">Você está logado.</h3>
 						<a class="btn btn-sm btn-info" href="/signout?returnUrl=%2F" style="float:right;">Sair</a>
 					</div>
-				</div>				
+				</div>
 			}
 			else
 			{
-				@Html.Hidden("logado", 0);
+				@Html.Hidden("logado", 0)
+				;
 				<!-- Modal content false -->
 				<div class="modal-content">
 					<div class="modal-header">
@@ -1368,7 +1370,7 @@
 								class="icon-amazon"></i> Amazon</button>
 						</form>
 					</div>
-					<div class="modal-footer">						
+					<div class="modal-footer">
 						<h3 style="color:white">Escolha seu provedor</h3>
 					</div>
 				</div>
@@ -1410,13 +1412,13 @@
 		@* $(".bookDegust").click(function () {
 			window.open('~/home/bookDegust.cshtml', '_blank');
 			}); *@
-			
-		var modal = document.getElementById("myModal");	
+
+		var modal = document.getElementById("myModal");
 		// check Cookie
 		function checkCookie() {
-			if($("#logado").val() == 1) {
+			if ($("#logado").val() == 1) {
 				modal.style.display = "block";
-				setTimeout(function() { modal.style.display = "none"; }, 4000);
+				setTimeout(function () { modal.style.display = "none"; }, 4000);
 				$(".mindMaps").click(function () {
 					window.open('https://www.doctorceo.online/mindMaps.html', '_blank');
 				});
@@ -1424,9 +1426,8 @@
 					window.open('https://www.doctorceo.online/figures.html', '_blank');
 				});
 			}
-			else 
-			{
-				modal.style.display = "block";				
+			else {
+				modal.style.display = "block";
 			}
 		}
 	</script>
@@ -1509,7 +1510,7 @@
 				$("#message").css({ border: "5px solid red" });
 			} else {
 				var mailToLink =
-					"mailto:rntprch@gmail.com?subject=contact from rajp.com.br!&body=Dear Renato, " +
+					"mailto:rntprch@gmail.com?subject=contact from rajp.com.br!&body=Prezado Renato, " +
 					formattedBody;
 				fail.css("display", "none");
 				success.css("display", "none");
