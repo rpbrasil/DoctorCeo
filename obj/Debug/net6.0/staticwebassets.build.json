@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ytcpaafvraUh9LHWx/ilsSUX9oAbEmVg42Rhy35TT84=",
+  "Hash": "t3Alnmw4V/rKqQ+dmG+V65DF7/kP1DUsy87CCJlKufM=",
   "Source": "DoctorCeo",
   "BasePath": "_content/DoctorCeo",
   "Mode": "Default",
@@ -2735,40 +2735,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\obj\\staticwebassets.pack.sentinel"
-    },
-    {
-      "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\txt\\~$ISO DE PRIVACIDADE.docx",
-      "SourceId": "DoctorCeo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\",
-      "BasePath": "_content/DoctorCeo",
-      "RelativePath": "txt/~$ISO DE PRIVACIDADE.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\txt\\~$ISO DE PRIVACIDADE.docx"
-    },
-    {
-      "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\txt\\~$IVACY NOTICE.docx",
-      "SourceId": "DoctorCeo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\",
-      "BasePath": "_content/DoctorCeo",
-      "RelativePath": "txt/~$IVACY NOTICE.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\txt\\~$IVACY NOTICE.docx"
     },
     {
       "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\txt\\AVISO DE PRIVACIDADE.docx",
