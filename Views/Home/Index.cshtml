@@ -1316,7 +1316,7 @@
 			@*------------------- TESTE DE USER IDENTITY ------------------- *@
 			@if (User?.Identity?.IsAuthenticated ?? false)
 			{
-				@Html.Hidden("logado?", 1);
+				@Html.Hidden("logado", 1);
 				<!-- Modal content true-->
 				<div class="modal-content">
 					<div class="modal-header">
