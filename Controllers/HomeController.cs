@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using DoctorCeo.Models;
 
@@ -16,8 +17,32 @@ public class HomeController : Controller
     [HttpGet("~/")]
     public IActionResult Index()
     {
-        return View();
+        if (User?.Identity?.IsAuthenticated ?? false)
+        {
+            string nome = "";
+            string email = "";
+            HttpContext context = this.HttpContext;
+            foreach (var claim in context.User.Claims)
+            {
+                if (claim.Type.Contains("name"))
+                {
+                    nome = claim.Value;
+                }
+                else if (claim.Type.Contains("email"))
+                {
+                    email = claim.Value;
+                }                
+            }
+            Console.WriteLine("nome: " + nome + " email: " + email);
+            return View();
+        }
+        else
+        {
+            Console.WriteLine("não logado");
+            return View();
+        }
     }
+    
 
     public IActionResult Privacy()
     {
