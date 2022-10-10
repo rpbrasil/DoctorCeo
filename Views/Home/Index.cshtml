@@ -1412,10 +1412,12 @@
 			window.open('~/home/bookDegust.cshtml', '_blank');
 			}); *@
 			
-			
+		var modal = document.getElementById("myModal");	
 		// check Cookie
 		function checkCookie() {
 			if($("#logado").val() == 1) {
+				modal.style.display = "block";
+				setTimeout(function () { modal.style.display = "none"; }, 4000);
 				console.log("logado!");
 				//modal.style.display = "block";
 				$(".mindMaps").click(function () {
@@ -1425,8 +1427,9 @@
 					window.open('https://www.doctorceo.online/figures.html', '_blank');
 				});
 			}
-			else {
-				// userlogged = prompt("Please enter your name:", "");
+			else 
+			{
+				modal.style.display = "block";
 				console.log("NÃO logado!");
 				
 			}
