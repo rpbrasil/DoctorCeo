@@ -1,8 +1,7 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@{
+	Layout = "_Layout";
+}
 
-<head>
-</head>
 <style>
 	html {
 		scroll-behavior: smooth;
@@ -173,11 +172,12 @@
 								<img alt="Ver o livro por dentro."
 									src="https://m.media-amazon.com/images/G/32/digital/sitb/sticker/sitb-sticker-v3-xsmall.png"
 									class="litb-on-click" id="ebooksSitbLogoImg" />
-								<a href="#" class="bookDegust">
+								<a href="/html/bookDegust.html" target="_blank" class="bookDegust">
 									<img src="img/wsite/olhoClinicoImpresso.jpeg" alt="" /></a>
 								<div class="name-profile t-center">
-									<a asp-area="" asp-controller="Home" asp-action="Privacy" target="_blank">
-										<h5 class="uppercase">Privacidade</h5>
+									<a href="img/wsite/AVISO_DE_PRIVACIDADE.pdf" target="_blank">
+										<h6 class="uppercase" style="font-size: 12px; color: white;">Política de
+											Privacidade</h6>
 									</a>
 								</div>
 							</div>
@@ -873,7 +873,7 @@
 													<li class="col-sm-6">
 														<!--Item-->
 														<div class="item mindmap">
-															<a href="#" class="mindMaps">
+															<a href="#" onclick="checkCookie();" class="mindMaps">
 																<div class="desc">
 																	<h5 class="proj-desc">
 																		Mapas Mentais
@@ -888,7 +888,7 @@
 													<li class="col-sm-6">
 														<!--Item-->
 														<div class="item table">
-															<a href="#" class="">
+															<a href="#" onclick="checkCookie();" class="">
 																<div class="desc">
 																	<h5 class="proj-desc">
 																		Caderno de Exercícios
@@ -903,7 +903,7 @@
 													<li class="col-sm-6">
 														<!--Item-->
 														<div class="item figure">
-															<a href="#" download="figuras.pdf" class="figures">
+															<a href="#" onclick="checkCookie();" class="figures">
 																<div class="desc">
 																	<h5 class="proj-desc">
 																		Figuras
@@ -1005,7 +1005,8 @@
 														<img alt="Ver o livro por dentro."
 															src="https://m.media-amazon.com/images/G/32/digital/sitb/sticker/sitb-sticker-v3-xsmall.png"
 															class="litb-on-click" id="ebooksSitbLogoImg2" />
-														<a href="#" class="bookDegust"><img alt=""
+														<a href="/html/bookDegust.html" target="_blank"
+															class="bookDegust"><img alt=""
 																src="img/wsite/olhoClinicoVertical2.jpeg" /></a>
 													</div>
 													<div class="entry-content">
@@ -1271,16 +1272,23 @@
 						<!--Social-->
 						<ul class="social">
 							<li>
-								<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://doctorceo.online"><i class="icon-facebook"></i></a>
+								<a target="_blank"
+									href="https://www.facebook.com/sharer/sharer.php?u=https://doctorceo.online"><i
+										class="icon-facebook"></i></a>
 							</li>
 							<li>
-								<a target="_blank" href="https://twitter.com/share?text=OLHO CLÍNICO - Uma nova visão sobre o processo decisório empresarial&url=https://doctorceo.online&hashtags=livros,decisão,processodecisório"><i class="icon-twitter"></i></a>
+								<a target="_blank"
+									href="https://twitter.com/share?text=OLHO CLÍNICO - Uma nova visão sobre o processo decisório empresarial&url=https://doctorceo.online&hashtags=livros,decisão,processodecisório"><i
+										class="icon-twitter"></i></a>
 							</li>
 							<li>
-								<a target="_blank" href="https://plus.google.com/share?url=https://doctorceo.online"><i class="icon-gplus"></i></a>
+								<a target="_blank" href="https://plus.google.com/share?url=https://doctorceo.online"><i
+										class="icon-gplus"></i></a>
 							</li>
 							<li>
-								<a target="_blank" href="https://www.linkedin.com/shareArticle?url=https://doctorceo.online&title=OLHO_CLÍNICO&summary=OLHO%20CL%C3%8DNICO%20-%20Uma%20nova%20vis%C3%A3o%20sobre%20o%20processo%20decis%C3%B3rio%20empresarial%26autor%3DRenatoPurchio&source=https://doctorceo.online"><i class="icon-linkedin"></i></a>
+								<a target="_blank"
+									href="https://www.linkedin.com/shareArticle?url=https://doctorceo.online&title=OLHO_CLÍNICO&summary=OLHO%20CL%C3%8DNICO%20-%20Uma%20nova%20vis%C3%A3o%20sobre%20o%20processo%20decis%C3%B3rio%20empresarial%26autor%3DRenatoPurchio&source=https://doctorceo.online"><i
+										class="icon-linkedin"></i></a>
 							</li>
 						</ul>
 						<!--End social-->
@@ -1305,11 +1313,10 @@
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
 		<div class="modal-dialog">
-
+			@*------------------- TESTE DE USER IDENTITY ------------------- *@
 			@if (User?.Identity?.IsAuthenticated ?? false)
 			{
-				<h1>Welcome, @User.Identity.Name</h1>
-
+				@Html.Hidden("logado?", 1);
 				<!-- Modal content true-->
 				<div class="modal-content">
 					<div class="modal-header">
@@ -1320,14 +1327,15 @@
 						<h1>Olá, @User.Identity.Name</h1>
 					</div>
 					<div class="modal-footer">
-						<h3 style="color:white">Bem-vindo(a) de volta !</h3>
+							<a class="btn btn-sm btn-info" href="/signout?returnUrl=%2F" style="float:left;">Sair</a>
+						<h3 style="color:white">Você está logado.</h3>
 					</div>
-				</div>
-				<a class="btn btn-lg btn-info" href="/signout?returnUrl=%2F">Fechar</a>
+				</div>				
 			}
 
 			else
 			{
+				@Html.Hidden("logado", 0);
 				<!-- Modal content false -->
 				<div class="modal-content">
 					<div class="modal-header">
@@ -1361,15 +1369,11 @@
 								class="icon-amazon"></i> Amazon</button>
 						</form>
 					</div>
-					<div class="modal-footer">
+					<div class="modal-footer">						
 						<h3 style="color:white">Escolha seu provedor</h3>
 					</div>
 				</div>
 			}
-
-
-
-
 
 		</div>
 	</div>
@@ -1404,56 +1408,27 @@
 
 	<!-- ADOBE iframe open | cookie set/get/check -->
 	<script>
-		// set Cookie
-		function setCookie(cname, cvalue, exdays) {
-			const d = new Date();
-			d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-			let expires = "expires=" + d.toUTCString();
-			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-		}
-
-		// get Cookie
-		function getCookie(cname) {
-			let name = cname + "=";
-			let decodedCookie = decodeURIComponent(document.cookie);
-			let ca = decodedCookie.split(';');
-			for (let i = 0; i < ca.length; i++) {
-				let c = ca[i];
-				while (c.charAt(0) == ' ') {
-					c = c.substring(1);
-				}
-				if (c.indexOf(name) == 0) {
-					return c.substring(name.length, c.length);
-				}
-			}
-			return "";
-		}
+		@* $(".bookDegust").click(function () {
+			window.open('~/home/bookDegust.cshtml', '_blank');
+			}); *@
+			
+			
 		// check Cookie
 		function checkCookie() {
-			let userlogged = getCookie("userLogged");
-			if (userlogged != "") {
-				alert("Welcome again " + userlogged);
-				$(".bookDegust").click(function () {
-					window.open('https://www.doctorceo.online/bookDegust.html', '_blank');
-				});
+			if($("#logado").val() == 1) {
+				console.log("logado!");
+				//modal.style.display = "block";
 				$(".mindMaps").click(function () {
 					window.open('https://www.doctorceo.online/mindMaps.html', '_blank');
 				});
 				$(".figures").click(function () {
 					window.open('https://www.doctorceo.online/figures.html', '_blank');
 				});
-			} else {
+			}
+			else {
 				// userlogged = prompt("Please enter your name:", "");
-
-				modal.style.display = "block";
-				$('form').submit(function () {
-					$.getJSON("/signin", function (data, status, xhr) {
-						console.log("resultado: ", data, status, xhr);
-					});
-				});
-				if (userlogged != "" && userlogged != null) {
-					setCookie("userlogged", userlogged, 365);
-				}
+				console.log("NÃO logado!");
+				
 			}
 		}
 	</script>
