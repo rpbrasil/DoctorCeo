@@ -1326,13 +1326,12 @@
 					<div class="modal-body">
 						<h1>Olá, @User.Identity.Name</h1>
 					</div>
-					<div class="modal-footer">
-							<a class="btn btn-sm btn-info" href="/signout?returnUrl=%2F" style="float:left;">Sair</a>
+					<div class="modal-footer">							
 						<h3 style="color:white">Você está logado.</h3>
+						<a class="btn btn-sm btn-info" href="/signout?returnUrl=%2F" style="float:right;">Sair</a>
 					</div>
 				</div>				
 			}
-
 			else
 			{
 				@Html.Hidden("logado", 0);
@@ -1417,9 +1416,7 @@
 		function checkCookie() {
 			if($("#logado").val() == 1) {
 				modal.style.display = "block";
-				setTimeout(function () { modal.style.display = "none"; }, 4000);
-				console.log("logado!");
-				//modal.style.display = "block";
+				setTimeout(function() { modal.style.display = "none"; }, 4000);
 				$(".mindMaps").click(function () {
 					window.open('https://www.doctorceo.online/mindMaps.html', '_blank');
 				});
@@ -1429,9 +1426,7 @@
 			}
 			else 
 			{
-				modal.style.display = "block";
-				console.log("NÃO logado!");
-				
+				modal.style.display = "block";				
 			}
 		}
 	</script>
