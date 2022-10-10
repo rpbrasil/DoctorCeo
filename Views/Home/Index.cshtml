@@ -1271,16 +1271,16 @@
 						<!--Social-->
 						<ul class="social">
 							<li>
-								<a target="_blank" href="https://www.facebook.com/"><i class="icon-facebook"></i></a>
+								<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://doctorceo.online"><i class="icon-facebook"></i></a>
 							</li>
 							<li>
-								<a target="_blank" href="https://twitter.com/home"><i class="icon-twitter"></i></a>
+								<a target="_blank" href="https://twitter.com/share?url=https%3A%2F%2doctorceo.online&text=Olho%20Clínico%20&via=RenatoPurchio"><i class="icon-twitter"></i></a>
 							</li>
 							<li>
 								<a target="_blank" href="https://www.google.com/"><i class="icon-gplus"></i></a>
 							</li>
 							<li>
-								<a target="_blank" href="https://www.linkedin.com"><i class="icon-linkedin"></i></a>
+								<a target="_blank" href="https://www.linkedin.com/shareArticle?url=https://doctorceo.online&title=OLHO_CLINICO&summary=testeShare&source=https://doctorceo.online"><i class="icon-linkedin"></i></a>
 							</li>
 						</ul>
 						<!--End social-->
@@ -1323,15 +1323,7 @@
 						<h3 style="color:white">Bem-vindo(a) de volta !</h3>
 					</div>
 				</div>
-
-				<p>
-					@foreach (var claim in Context.User.Claims)
-					{
-					<div><code>@claim.Type</code>: <strong>@claim.Value</strong></div>
-					}
-				</p>
-
-				<a class="btn btn-lg btn-danger" href="/signout?returnUrl=%2F">Sign out</a>
+				<a class="btn btn-lg btn-info" href="/signout?returnUrl=%2F">Fechar</a>
 			}
 
 			else

@@ -19,6 +19,7 @@ public class HomeController : Controller
     {
         if (User?.Identity?.IsAuthenticated ?? false)
         {
+            string nameId = "";
             string nome = "";
             string email = "";
             HttpContext context = this.HttpContext;
@@ -28,17 +29,21 @@ public class HomeController : Controller
                 {
                     nome = claim.Value;
                 }
-                else if (claim.Type.Contains("email"))
+                else if (claim.Type.Contains("emailaddress"))
                 {
                     email = claim.Value;
-                }                
+                }
+                else if (claim.Type.Contains("nameidentifier"))
+                {
+                    nameId = claim.Value;
+                }
             }
-            Console.WriteLine("nome: " + nome + " email: " + email);
+            Debug.WriteLine(nameId+" nome: " + nome + " email: " + email);
             return View();
         }
         else
         {
-            Console.WriteLine("não logado");
+            Debug.WriteLine("não logado");
             return View();
         }
     }
