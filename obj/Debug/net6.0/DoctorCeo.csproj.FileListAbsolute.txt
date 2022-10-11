@@ -40,3 +40,8 @@ C:\Users\rpbrasil\Local_Repos\DoctorCeo\obj\Debug\net6.0\refint\DoctorCeo.dll
 C:\Users\rpbrasil\Local_Repos\DoctorCeo\obj\Debug\net6.0\DoctorCeo.pdb
 C:\Users\rpbrasil\Local_Repos\DoctorCeo\obj\Debug\net6.0\DoctorCeo.genruntimeconfig.cache
 C:\Users\rpbrasil\Local_Repos\DoctorCeo\obj\Debug\net6.0\ref\DoctorCeo.dll
+C:\Users\rpbrasil\Local_Repos\DoctorCeo\bin\Debug\net6.0\__azurite_db_table__.json
+C:\Users\rpbrasil\Local_Repos\DoctorCeo\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\rpbrasil\Local_Repos\DoctorCeo\bin\Debug\net6.0\Azure.Data.Tables.dll
+C:\Users\rpbrasil\Local_Repos\DoctorCeo\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\rpbrasil\Local_Repos\DoctorCeo\bin\Debug\net6.0\System.Memory.Data.dll

@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 using DoctorCeo.Models;
 
 namespace DoctorCeo.Controllers;
-
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
@@ -38,6 +37,7 @@ public class HomeController : Controller
                     nameId = claim.Value;
                 }
             }
+        // http://<storage account>.table.core.windows.net/<table>
             Debug.WriteLine(nameId+" nome: " + nome + " email: " + email);
             return View();
         }

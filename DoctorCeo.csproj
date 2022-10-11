@@ -21,7 +21,8 @@
     <PackageReference Include="AspNet.Security.OAuth.Twitter" Version="6.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-    <PackageReference Include="AspNet.Security.OAuth.Amazon" Version="6.0.11" />    
+    <PackageReference Include="AspNet.Security.OAuth.Amazon" Version="6.0.11" />
+    <PackageReference Include="Azure.Data.Tables" Version="12.6.1" />    
   </ItemGroup>
 
 </Project>
