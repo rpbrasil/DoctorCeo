@@ -1316,13 +1316,6 @@
 			@*------------------- TESTE DE USER IDENTITY ------------------- *@
 			@if (User?.Identity?.IsAuthenticated ?? false)
 			{
-				
-				foreach (var claim in Context.User.Claims)
-            {
-				<p>@claim.Type<span> - </span>@claim.Value</p>					
-            }
-				
-				
 				@Html.Hidden("logado", 1)
 				;
 				<!-- Modal content true-->
