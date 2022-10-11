@@ -99,8 +99,8 @@ namespace DoctorCeo
                 o.ClientId = Configuration["Amazon:ClientId"];
                 o.ClientSecret = Configuration["Amazon:ClientSecret"];
                 // Optionally request the user's postal code, if needed
-                o.Scope.Add("postal_code");
-                o.Fields.Add("postal_code");
+                //o.Scope.Add("postal_code");
+                //o.Fields.Add("postal_code");
             });
             services.AddMvc().AddRazorPagesOptions(opt =>
             {
