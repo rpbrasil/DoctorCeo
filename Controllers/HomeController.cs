@@ -38,12 +38,12 @@ public class HomeController : Controller
                 }
             }
         // http://<storage account>.table.core.windows.net/<table>
-            Debug.WriteLine(nameId+" nome: " + nome + " email: " + email);
+            Console.WriteLine(nameId+" nome: " + nome + " email: " + email);
             return View();
         }
         else
         {
-            Debug.WriteLine("não logado");
+            Console.WriteLine("não logado");
             return View();
         }
     }
