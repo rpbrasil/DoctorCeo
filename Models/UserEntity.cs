@@ -1,0 +1,24 @@
+using Azure.Data.Tables;
+using Azure;
+namespace DoctorCeo.Models;
+
+public class UserEntity : ITableEntity
+{
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public string NameId { get; set; }
+    public string SigninProvider { get; set; }
+    public DateTime LastSigninDate { get; set; }
+    //ITableEntity Members
+    public virtual string PartitionKey { get => SigninProvider.ToString(); set => SigninProvider = value; }
+    public virtual string RowKey { get => NameId.ToString(); set => NameId = value; }
+    public DateTimeOffset? Timestamp { get; set; }
+    public ETag ETag { get; set; }
+
+    public UserEntity() { }
+    public UserEntity(string signinProvider, string lastSigninDate)
+    {
+        PartitionKey = signinProvider;
+        RowKey = lastSigninDate;
+    }
+}
