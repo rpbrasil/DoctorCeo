@@ -47,15 +47,15 @@ public class HomeController : Controller
             HttpContext context = this.HttpContext;
             foreach (var claim in context.User.Claims)
             {
-                if (claim.Type.Contains("name"))
+                if (claim.Type == "name")
                 {
                     name = claim.Value;
                 }
-                else if (claim.Type.Contains("emailaddress"))
+                else if (claim.Type == "emailaddress")
                 {
                     email = claim.Value;
                 }
-                else if (claim.Type.Contains("nameidentifier"))
+                else if (claim.Type == "nameidentifier")
                 {
                     nameId = claim.Value;
                 }
@@ -75,9 +75,7 @@ public class HomeController : Controller
     {
         string message = string.Empty;
         var ConnStr = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("AzureStorageConfig")["ConnString"];
-        // New instance of the TableClient class
         TableServiceClient tableServiceClient = new TableServiceClient(ConnStr);
-        // New instance of TableClient class referencing the server-side table
         TableClient tableClient = tableServiceClient.GetTableClient("sitevisitors");
         UserEntity sitevisitor = new UserEntity()
         {
