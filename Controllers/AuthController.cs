@@ -22,8 +22,7 @@ public class AuthController : Controller
             if (!await DoctorCeo.Extensions.HttpContextExtensions.IsProviderSupportedAsync(HttpContext, provider))
             {
                 return BadRequest();
-            }
-            
+            }            
             return Challenge(new AuthenticationProperties { RedirectUri = "/" }, provider);
         }
         return BadRequest();

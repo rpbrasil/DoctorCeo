@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using DoctorCeo.Models;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Configuration;
 using Azure.Data.Tables;
 
 namespace DoctorCeo.Controllers;
