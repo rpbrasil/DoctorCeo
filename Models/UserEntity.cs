@@ -12,7 +12,7 @@ public class UserEntity : ITableEntity
     public string LastSigninDate { get; set; }
     //ITableEntity Members
     public virtual string PartitionKey { get => SigninProvider.ToString(); set => SigninProvider = value; }
-    public virtual string RowKey { get => LastSigninDate.ToString(); set => LastSigninDate = value; }
+    public virtual string RowKey { get => Email.ToString(); set => Email = value; }
     public DateTimeOffset? Timestamp { get; set; }
     public ETag ETag { get; set; }
 
