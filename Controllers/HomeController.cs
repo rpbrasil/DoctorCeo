@@ -2,30 +2,29 @@
 using Microsoft.AspNetCore.Mvc;
 using DoctorCeo.Models;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 using Azure.Data.Tables;
 
 namespace DoctorCeo.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    //private readonly AzureConfiguration storageConfig = null;
-    //private TableClient _tableClient;
-    // public HomeController(ILogger<HomeController> logger, IOptions<AzureConfiguration> config, TableClient tableClient)
+        
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
-        
+
     }
     [HttpGet("~/")]
     public IActionResult Index()
     {
         if (User?.Identity?.IsAuthenticated ?? false)
         {
-            string nameId = "";
-            string name = "";
-            string email = "";
-            string provider = "";
-            DateTime localDate = DateTime.Now;
+            string nameId = "teste9999";
+            string name = "testeNome testeSobreNome";
+            string email = "teste@email.com";
+            string provider = "facedIn";
+            DateTime utcDate = DateTime.UtcNow;
             var referer = HttpContext.Request.Headers.Referer;
             switch (referer)
             {
@@ -61,8 +60,8 @@ public class HomeController : Controller
                     nameId = claim.Value;
                 }
             }
-            var result = InsertTableEntity(name, email, nameId, provider, localDate);
-            Console.WriteLine(provider + nameId + " nome: " + name + " email: " + email);
+            var result = InsertTableEntity(name, email, nameId, provider, utcDate);
+            Console.WriteLine("provider: ", provider + nameId + " nome: " + name + " email: " + email+"date: ",utcDate);
             return View();
         }
         else
@@ -72,20 +71,21 @@ public class HomeController : Controller
         }
     }
 
-    public async Task<string> InsertTableEntity(string name, string email, string nameId, string provider, DateTime localDate)
+    public async Task<string> InsertTableEntity(string name, string email, string nameId, string provider, DateTime utcDate)
     {
         string message = string.Empty;
+        var ConnStr = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("AzureStorageConfig")["ConnString"];
         // New instance of the TableClient class
-        TableServiceClient tableServiceClient = new TableServiceClient(Environment.GetEnvironmentVariable("AzureStorageConfig"));
+        TableServiceClient tableServiceClient = new TableServiceClient(ConnStr);
         // New instance of TableClient class referencing the server-side table
-        TableClient tableClient = tableServiceClient.GetTableClient(tableName: "sitevisitors");
+        TableClient tableClient = tableServiceClient.GetTableClient("sitevisitors");
         UserEntity sitevisitor = new UserEntity()
         {
             Name = name,
             Email = email,
             NameId = nameId,
             SigninProvider = provider,
-            LastSigninDate = localDate
+            LastSigninDate = utcDate
         };
 
         Azure.Response response = await tableClient.AddEntityAsync<UserEntity>(sitevisitor);

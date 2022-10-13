@@ -97,11 +97,11 @@ namespace DoctorCeo
                 opt.RootDirectory = "/views";
             });
             
-            // Add functionality to inject IOptions<T>
-            services.AddOptions();
+            // // Add functionality to inject IOptions<T>
+            // services.AddOptions();
 
-            // Add our Config object so it can be injected
-            services.Configure<AzureConfiguration>(Configuration.GetSection("AzureStorageConfig"));
+            // // Add our Config object so it can be injected
+            // services.Configure<AzureConfiguration>(Configuration.GetSection("AzureStorageConfig"));
         }
     
         public void Configure(IApplicationBuilder app)
