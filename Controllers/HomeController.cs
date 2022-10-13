@@ -47,17 +47,17 @@ public class HomeController : Controller
             HttpContext context = this.HttpContext;
             foreach (var claim in context.User.Claims)
             {
-                if (claim.Type == "name")
+                if (claim.Type.Contains("claims/nameidentifier"))
                 {
-                    name = claim.Value;
+                    nameId = claim.Value;
                 }
-                else if (claim.Type == "emailaddress")
+                else if (claim.Type.Contains("claims/emailaddress"))
                 {
                     email = claim.Value;
                 }
-                else if (claim.Type == "nameidentifier")
+                else if (claim.Type.Contains("claims/name"))
                 {
-                    nameId = claim.Value;
+                    name = claim.Value;
                 }
             }
             var result = InsertTableEntity(name, email, nameId, provider, utcDate);
