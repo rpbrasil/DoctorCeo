@@ -18,11 +18,11 @@ public class HomeController : Controller
     {
         if (User?.Identity?.IsAuthenticated ?? false)
         {
-            string nameId = "teste9999";
-            string name = "testeNome testeSobreNome";
-            string email = "teste@email.com";
-            string provider = "facedIn";
-            DateTime utcDate = DateTime.UtcNow;
+            string nameId = "";
+            string name = "";
+            string email = "-";
+            string provider = "facebook";
+            string utcDate = DateTime.UtcNow.ToLocalTime().ToString("dd/MM/yyyy HH-mm-ss");
             var referer = HttpContext.Request.Headers.Referer;
             switch (referer)
             {
