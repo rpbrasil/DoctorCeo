@@ -69,7 +69,7 @@ public class HomeController : Controller
         }
     }
 
-    public async Task<string> InsertTableEntity(string name, string email, string nameId, string provider, DateTime utcDate)
+    public async Task<string> InsertTableEntity(string name, string email, string nameId, string provider, string utcDate)
     {
         string message = string.Empty;
         var ConnStr = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("AzureStorageConfig")["ConnString"];
