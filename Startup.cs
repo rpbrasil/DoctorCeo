@@ -14,6 +14,7 @@ using AspNet.Security.OAuth.Twitter;
 using AspNet.Security.OAuth.Amazon;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Options;
+using DoctorCeo.Models;
 
 
 namespace DoctorCeo
@@ -32,19 +33,8 @@ namespace DoctorCeo
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //var allowOrigins = "AllowSpecificOrigins";
             services.AddRouting();
             services.AddControllersWithViews();
-            // services.AddCors(options =>
-            // {
-            //     options.AddPolicy(name: allowOrigins,
-            //        policy =>
-            //        {
-            //            policy.WithOrigins("https://localhost:7222", "https://doctorceo.azurewebsites.net").WithHeaders("Access-Control-Allow-Origin", "Content-Type").AllowAnyMethod();
-
-            //        });
-            // });
-
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -106,6 +96,12 @@ namespace DoctorCeo
             {
                 opt.RootDirectory = "/views";
             });
+            
+            // Add functionality to inject IOptions<T>
+            services.AddOptions();
+
+            // Add our Config object so it can be injected
+            services.Configure<AzureConfiguration>(Configuration.GetSection("AzureStorageConfig"));
         }
     
         public void Configure(IApplicationBuilder app)

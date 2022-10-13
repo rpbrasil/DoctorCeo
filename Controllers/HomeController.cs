@@ -1,17 +1,20 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using DoctorCeo.Models;
+using Microsoft.Extensions.Options;
+using Azure.Data.Tables;
 
 namespace DoctorCeo.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-
+    //private readonly AzureConfiguration storageConfig = null;
+    //private TableClient _tableClient;
+    // public HomeController(ILogger<HomeController> logger, IOptions<AzureConfiguration> config, TableClient tableClient)
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
+        
     }
     [HttpGet("~/")]
     public IActionResult Index()
@@ -22,7 +25,7 @@ public class HomeController : Controller
             string name = "";
             string email = "";
             string provider = "";
-
+            DateTime localDate = DateTime.Now;
             var referer = HttpContext.Request.Headers.Referer;
             switch (referer)
             {
@@ -58,7 +61,7 @@ public class HomeController : Controller
                     nameId = claim.Value;
                 }
             }
-            // http://<storage account>.table.core.windows.net/<table>
+            var result = InsertTableEntity(name, email, nameId, provider, localDate);
             Console.WriteLine(provider + nameId + " nome: " + name + " email: " + email);
             return View();
         }
@@ -69,6 +72,61 @@ public class HomeController : Controller
         }
     }
 
+    public async Task<string> InsertTableEntity(string name, string email, string nameId, string provider, DateTime localDate)
+    {
+        string message = string.Empty;
+        // New instance of the TableClient class
+        TableServiceClient tableServiceClient = new TableServiceClient(Environment.GetEnvironmentVariable("AzureStorageConfig"));
+        // New instance of TableClient class referencing the server-side table
+        TableClient tableClient = tableServiceClient.GetTableClient(tableName: "sitevisitors");
+        UserEntity sitevisitor = new UserEntity()
+        {
+            Name = name,
+            Email = email,
+            NameId = nameId,
+            SigninProvider = provider,
+            LastSigninDate = localDate
+        };
+
+        Azure.Response response = await tableClient.AddEntityAsync<UserEntity>(sitevisitor);
+        message = response.Status.ToString();
+        return message;
+    }
+    // Para mais metodos neste tema: https://github.com/Azure-Samples/msdocs-azure-data-tables-sdk-dotnet/blob/main/2-completed-app/AzureTablesDemoApplicaton/Services/TablesService.cs
+    public void InsertTableEntity(UserEntity model)
+    {
+        TableEntity entity = new TableEntity();
+        entity.PartitionKey = model.PartitionKey;
+        entity.RowKey = $"{model.RowKey} {model.Timestamp}";
+
+        // The other values are added like a items to a dictionary
+        entity["Name"] = model.Name;
+        entity["Email"] = model.Email;
+        entity["NameId"] = model.NameId;
+        entity["LastSigninDate"] = model.LastSigninDate;
+        entity["SigninProvider"] = model.SigninProvider;
+        entity["Etag"] = model.ETag;
+
+        // _tableClient.AddEntity(entity);
+    }
+
+
+    public void UpsertTableEntity(UserEntity model)
+    {
+        TableEntity entity = new TableEntity();
+        entity.PartitionKey = model.PartitionKey;
+        entity.RowKey = $"{model.RowKey} {model.Timestamp}";
+
+        // The other values are added like a items to a dictionary
+        entity["Name"] = model.Name;
+        entity["Email"] = model.Email;
+        entity["NameId"] = model.NameId;
+        entity["LastSigninDate"] = model.LastSigninDate;
+        entity["SigninProvider"] = model.SigninProvider;
+        entity["Etag"] = model.ETag;
+
+         //_tableClient.UpsertEntity(entity);
+    }
     public IActionResult Privacy()
     {
         return View();

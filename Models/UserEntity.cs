@@ -1,5 +1,6 @@
 using Azure.Data.Tables;
 using Azure;
+
 namespace DoctorCeo.Models;
 
 public class UserEntity : ITableEntity
@@ -16,9 +17,10 @@ public class UserEntity : ITableEntity
     public ETag ETag { get; set; }
 
     public UserEntity() { }
-    public UserEntity(string signinProvider, string lastSigninDate)
-    {
-        PartitionKey = signinProvider;
-        RowKey = lastSigninDate;
-    }
+    // public UserEntity(string signinProvider, string lastSigninDate,string name)
+    // {
+    //     PartitionKey = signinProvider;
+    //     RowKey = lastSigninDate;
+    //     Name = name;
+    // }
 }
