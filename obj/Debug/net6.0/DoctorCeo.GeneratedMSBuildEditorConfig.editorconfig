@@ -8,57 +8,57 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DoctorCeo
 build_property.RootNamespace = DoctorCeo
-build_property.ProjectDir = C:\Users\rpbrasil\Local_Repos\DoctorCeo\
+build_property.ProjectDir = c:\Users\rpbrasil\Local_Repos\DoctorCeo\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\rpbrasil\Local_Repos\DoctorCeo
+build_property.MSBuildProjectDirectory = c:\Users\rpbrasil\Local_Repos\DoctorCeo
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Authentication/SignIn.cshtml]
+[c:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Authentication/SignIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cU2lnbkluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Home/bookDegust.cshtml]
+[c:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Home/bookDegust.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxib29rRGVndXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Home/figures.cshtml]
+[c:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Home/figures.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxmaWd1cmVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Home/Index.cshtml]
+[c:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Home/mindMaps.cshtml]
+[c:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Home/mindMaps.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxtaW5kTWFwcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Home/Privacy.cshtml]
+[c:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Home/project_single.cshtml]
+[c:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Home/project_single.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxwcm9qZWN0X3NpbmdsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Shared/Error.cshtml]
+[c:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Shared/_ValidationScriptsPartial.cshtml]
+[c:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/_ViewImports.cshtml]
+[c:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/_ViewStart.cshtml]
+[c:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Shared/_Layout.cshtml]
+[c:/Users/rpbrasil/Local_Repos/DoctorCeo/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-92ykz37mh2
