@@ -1,5 +1,6 @@
 using Azure.Data.Tables;
 using Azure;
+using System;
 
 namespace DoctorCeo.Models;
 

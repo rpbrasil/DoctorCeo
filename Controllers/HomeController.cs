@@ -58,7 +58,7 @@ public class HomeController : Controller
                     name = claim.Value;
                 }
             }
-            var result = InsertTableEntity(name, email, nameId, provider, utcDate);
+            var result = UpsertTableEntity(name, email, nameId, provider, utcDate);
             Console.WriteLine("provider: ", provider + nameId + " nome: " + name + " email: " + email+"date: ",utcDate);
             return View();
         }
@@ -69,7 +69,7 @@ public class HomeController : Controller
         }
     }
 
-    public async Task<string> InsertTableEntity(string name, string email, string nameId, string provider, string utcDate)
+    public async Task<string> UpsertTableEntity(string name, string email, string nameId, string provider, string utcDate)
     {
         string message = string.Empty;
         var ConnStr = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("AzureStorageConfig")["ConnString"];
@@ -81,13 +81,26 @@ public class HomeController : Controller
             Email = email,
             NameId = nameId,
             SigninProvider = provider,
-            LastSigninDate = utcDate
+            LastSigninDate = utcDate,            
         };
-
-        Azure.Response response = await tableClient.AddEntityAsync<UserEntity>(sitevisitor);
+        Azure.Response response = await tableClient.UpsertEntityAsync(sitevisitor);
+        // tableClient.UpdateEntity(sitevisitor, Azure.ETag.All, TableUpdateMode.Replace);
+        // Azure.Response response = await tableClient.AddEntityAsync<UserEntity>(sitevisitor);
         message = response.Status.ToString();
         return message;
     }
+
+    public ActionResult<DateTimeOffset?> GetLastAccessTime(TableClient table, string partitionKey, string rowKey)
+    {
+        //Please refer to https://docs.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities for more details about query syntax.
+        var queryResult = table.Query<UserEntity>(filter: $"PartitionKey eq '{partitionKey}' and RowKey eq '{rowKey}'").Single();
+
+        DateTimeOffset? res = queryResult.Timestamp;
+        return res;
+    }
+
+
+
     // Para mais metodos neste tema: https://github.com/Azure-Samples/msdocs-azure-data-tables-sdk-dotnet/blob/main/2-completed-app/AzureTablesDemoApplicaton/Services/TablesService.cs
     public void InsertTableEntity(UserEntity model)
     {
@@ -105,7 +118,6 @@ public class HomeController : Controller
 
         // _tableClient.AddEntity(entity);
     }
-
 
     public void UpsertTableEntity(UserEntity model)
     {
