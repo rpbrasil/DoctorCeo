@@ -70,7 +70,6 @@ public class HomeController : Controller
         }
     }
 
-   [Authorize]
     public IActionResult MindMaps()
     {
         return View("mindMaps");
