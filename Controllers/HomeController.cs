@@ -82,6 +82,14 @@ public class HomeController : Controller
     {
         return View("bookDegust");
     }
+    public IActionResult Exercises()
+    {
+        return View("exercises");
+    }
+    public IActionResult Logics()
+    {
+        return View("logics");
+    }
     public async Task<string> UpsertTableEntity(string name, string email, string nameId, string provider, string utcDate)
     {
         string message = string.Empty;

@@ -888,7 +888,7 @@
 													<li class="col-sm-6">
 														<!--Item-->
 														<div class="item table">
-															<a href="#" onclick="checkCookie();" class="">
+															<a asp-controller="Home" asp-action="Exercises"  class="exercises">
 																<div class="desc">
 																	<h5 class="proj-desc">
 																		Caderno de Exercícios
@@ -903,7 +903,7 @@
 													<li class="col-sm-6">
 														<!--Item-->
 														<div class="item figure">
-															<a href="#" onclick="checkCookie();" class="figures">
+															<a asp-controller="Home" asp-action="Figures" class="figures">
 																<div class="desc">
 																	<h5 class="proj-desc">
 																		Figuras
@@ -918,7 +918,7 @@
 													<li class="col-sm-6">
 														<!--Item-->
 														<div class="item all figure">
-															<a href="#" onclick="" class="logics">
+															<a asp-controller="Home" asp-action="Logics"  class="logics">
 																<div class="desc">
 																	<h5 class="proj-desc">
 																		Resumo da Lógica
@@ -1422,16 +1422,16 @@
 		function checkCookie() {
 			if ($("#logado").val() == 1) {
 				modal.style.display = "block";
-				setTimeout(function () { modal.style.display = "none"; }, 4000);
+				//setTimeout(function () { modal.style.display = "none"; }, 4000);
 				@* $(".mindMaps").click(function () {
 					window.open('https://www.doctorceo.online/CONCEALED/mindMaps.html', '_blank');
 				}); *@
-				$(".figures").click(function () {
+				@* $(".figures").click(function () {
 					window.open('https://www.doctorceo.online/CONCEALED/figures.html', '_blank');
 				});
 				$(".logics").click(function () {
 					window.open('https://www.doctorceo.online/CONCEALED/logics.html', '_blank');
-				});
+				}); *@
 			}
 			else {
 				modal.style.display = "block";
