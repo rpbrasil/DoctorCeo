@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using DoctorCeo.Models;
 using Azure.Data.Tables;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DoctorCeo.Controllers;
 public class HomeController : Controller
@@ -69,7 +70,7 @@ public class HomeController : Controller
         }
     }
 
-   
+   [Authorize]
     public IActionResult MindMaps()
     {
         return View("mindMaps");

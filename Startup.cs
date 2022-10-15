@@ -1,20 +1,6 @@
-using System.Globalization;
 using System.Security.Claims;
-using System.Text.Encodings.Web;
-using System.Text;
-using System.Text.Json;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Facebook;
-using Microsoft.AspNetCore.Authentication.Google;
-using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
-using Microsoft.AspNetCore.Authentication.OAuth;
-using AspNet.Security.OAuth.LinkedIn;
-using AspNet.Security.OAuth.Twitter;
-using AspNet.Security.OAuth.Amazon;
-using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.Extensions.Options;
-using DoctorCeo.Models;
 
 
 namespace DoctorCeo
