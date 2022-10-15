@@ -866,74 +866,153 @@
 											</div>
 										</div>
 										<!--End row-->
-										<!--Row-->
-										<div class="row">
-											<div class="col-md-12">
-												<ul class="work">
-													<li class="col-sm-6">
-														<!--Item-->
+										@if (User?.Identity?.IsAuthenticated ?? false)
+										{
+											<!--Row-->
+											<div class="row">
+												<div class="col-md-12">
+													<ul class="work">
+														<li class="col-sm-6">
+															<!--Item-->
 														<div class="item mindmap">
-															<a asp-controller="Home" asp-action="MindMaps" class="mindMaps">
-																<div class="desc">
-																	<h5 class="proj-desc">
-																		Mapas Mentais
-																		<span>Download PDF</span>
-																	</h5>
-																</div>
-																<img src="img/wsite/mindMaps2.png" alt="" />
-															</a>
-														</div>
-														<!--End item-->
+																<a asp-controller="Home" asp-action="MindMaps"
+																class="mindMaps">
+																	<div class="desc">
+																		<h5 class="proj-desc">
+																			Mapas Mentais
+																			<span>Download PDF</span>
+																		</h5>
+																	</div>
+																	<img src="img/wsite/mindMaps2.png" alt="" />
+																</a>
+															</div>
+															<!--End item-->
 													</li>
-													<li class="col-sm-6">
-														<!--Item-->
+														<li class="col-sm-6">
+															<!--Item-->
 														<div class="item table">
-															<a asp-controller="Home" asp-action="Exercises"  class="exercises">
-																<div class="desc">
-																	<h5 class="proj-desc">
-																		Caderno de Exercícios
-																		<span>Download PDF</span>
-																	</h5>
-																</div>
-																<img src="img/wsite/cadernoExerc.png" alt="" />
-															</a>
-														</div>
-														<!--End item-->
+																<a asp-controller="Home" asp-action="Exercises"
+																class="exercises">
+																	<div class="desc">
+																		<h5 class="proj-desc">
+																			Caderno de Exercícios
+																			<span>Download PDF</span>
+																		</h5>
+																	</div>
+																	<img src="img/wsite/cadernoExerc.png" alt="" />
+																</a>
+															</div>
+															<!--End item-->
 													</li>
-													<li class="col-sm-6">
-														<!--Item-->
+														<li class="col-sm-6">
+															<!--Item-->
 														<div class="item figure">
-															<a asp-controller="Home" asp-action="Figures" class="figures">
-																<div class="desc">
-																	<h5 class="proj-desc">
-																		Figuras
-																		<span>Download PDF</span>
-																	</h5>
-																</div>
-																<img src="img/wsite/imagensGraf.png" alt="" />
-															</a>
-														</div>
-														<!--End item-->
+																<a asp-controller="Home" asp-action="Figures"
+																class="figures">
+																	<div class="desc">
+																		<h5 class="proj-desc">
+																			Figuras
+																			<span>Download PDF</span>
+																		</h5>
+																	</div>
+																	<img src="img/wsite/imagensGraf.png" alt="" />
+																</a>
+															</div>
+															<!--End item-->
 													</li>
-													<li class="col-sm-6">
-														<!--Item-->
+														<li class="col-sm-6">
+															<!--Item-->
 														<div class="item all figure">
-															<a asp-controller="Home" asp-action="Logics"  class="logics">
-																<div class="desc">
-																	<h5 class="proj-desc">
-																		Resumo da Lógica
-																		<span>Download PDF</span>
-																	</h5>
-																</div>
-																<img src="img/wsite/logics.PNG" alt="" />
-															</a>
-														</div>
-														<!--End item-->
+																<a asp-controller="Home" asp-action="Logics" class="logics">
+																	<div class="desc">
+																		<h5 class="proj-desc">
+																			Resumo da Lógica
+																			<span>Download PDF</span>
+																		</h5>
+																	</div>
+																	<img src="img/wsite/logics.PNG" alt="" />
+																</a>
+															</div>
+															<!--End item-->
 													</li>
-												</ul>
+													</ul>
+												</div>
 											</div>
-										</div>
-										<!--End row-->
+											<!--End row-->
+										}
+										else
+										{
+											<!--Row-->
+											<div class="row">
+												<div class="col-md-12">
+													<ul class="work">
+														<li class="col-sm-6">
+															<!--Item-->
+														<div class="item mindmap">
+																<a onclick="modal.style.display = 'block';"
+																class="mindMaps">
+																	<div class="desc">
+																		<h5 class="proj-desc">
+																			Mapas Mentais
+																			<span>Download PDF</span>
+																		</h5>
+																	</div>
+																	<img src="img/wsite/mindMaps2.png" alt="" />
+																</a>
+															</div>
+															<!--End item-->
+													</li>
+														<li class="col-sm-6">
+															<!--Item-->
+														<div class="item table">
+																<a onclick="modal.style.display = 'block';"
+																class="exercises">
+																	<div class="desc">
+																		<h5 class="proj-desc">
+																			Caderno de Exercícios
+																			<span>Download PDF</span>
+																		</h5>
+																	</div>
+																	<img src="img/wsite/cadernoExerc.png" alt="" />
+																</a>
+															</div>
+															<!--End item-->
+													</li>
+														<li class="col-sm-6">
+															<!--Item-->
+														<div class="item figure">
+																<a onclick="modal.style.display = 'block';" class="figures">
+																	<div class="desc">
+																		<h5 class="proj-desc">
+																			Figuras
+																			<span>Download PDF</span>
+																		</h5>
+																	</div>
+																	<img src="img/wsite/imagensGraf.png" alt="" />
+																</a>
+															</div>
+															<!--End item-->
+													</li>
+														<li class="col-sm-6">
+															<!--Item-->
+														<div class="item all figure">
+																<a onclick="modal.style.display = 'block';" class="logics">
+																	<div class="desc">
+																		<h5 class="proj-desc">
+																			Resumo da Lógica
+																			<span>Download PDF</span>
+																		</h5>
+																	</div>
+																	<img src="img/wsite/logics.PNG" alt="" />
+																</a>
+															</div>
+															<!--End item-->
+													</li>
+													</ul>
+												</div>
+											</div>
+											<!--End row-->
+										}
 									</div>
 									<!--End works-->
 								</div>
@@ -1313,73 +1392,43 @@
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
 		<div class="modal-dialog">
-			@*------------------- TESTE DE USER IDENTITY ------------------- *@
-			@if (User?.Identity?.IsAuthenticated ?? false)
-			{
-				@* foreach (var claim in Context.User.Claims)
-					{
-					<h1>@claim.Type<span> - </span>@claim.Value</h1>
-					} *@
-				@Html.Hidden("logado", 1)
-				;
-				<!-- Modal content true-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<span class="close">&times;</span>
-						<h2 style="color:white">@DateTime.UtcNow.ToLocalTime()</h2>
-					</div>
-					<div class="modal-body">
-						<h1>Olá, @User.Identity.Name</h1>
-					</div>
-					<div class="modal-footer">
-						<h3 style="color:white;float:left">Você está logado.</h3>
-						<a class="btn btn-sm btn-info" href="/signout?returnUrl=%2F" style="float:right;">Sair</a>
-					</div>
+			<!-- Modal content false -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2 style="color:white">Login</h2>
 				</div>
-			}
-			else
-			{
-				@Html.Hidden("logado", 0)
-				;
-				<!-- Modal content false -->
-				<div class="modal-content">
-					<div class="modal-header">
-						<span class="close">&times;</span>
-						<h2 style="color:white">Login</h2>
-					</div>
-					<div class="modal-body">
-						<form action="/signin" method="post">
-							<input type="hidden" name="Provider" value="LinkedIn" />
-							<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
+				<div class="modal-body">
+					<form action="/signin" method="post">
+						<input type="hidden" name="Provider" value="LinkedIn" />
+						<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
 								class="icon-linkedin"></i> LinkedIn</button>
-						</form>
-						<form action="/signin" method="post">
-							<input type="hidden" name="Provider" value="Facebook" />
-							<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
+					</form>
+					<form action="/signin" method="post">
+						<input type="hidden" name="Provider" value="Facebook" />
+						<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
 								class="icon-facebook"></i> Facebook</button>
-						</form>
-						<form action="/signin" method="post">
-							<input type="hidden" name="Provider" value="Google" />
-							<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
+					</form>
+					<form action="/signin" method="post">
+						<input type="hidden" name="Provider" value="Google" />
+						<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
 								class="icon-gplus"></i> Google</button>
-						</form>
-						<form action="/signin" method="post">
-							<input type="hidden" name="Provider" value="Twitter" />
-							<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
+					</form>
+					<form action="/signin" method="post">
+						<input type="hidden" name="Provider" value="Twitter" />
+						<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
 								class="icon-twitter"></i> Twitter</button>
-						</form>
-						<form action="/signin" method="post">
-							<input type="hidden" name="Provider" value="Amazon" />
-							<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
+					</form>
+					<form action="/signin" method="post">
+						<input type="hidden" name="Provider" value="Amazon" />
+						<button class="btn-block btn-primary" style="padding:10px;" type="submit"><i
 								class="icon-amazon"></i> Amazon</button>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<h3 style="color:white">Escolha seu provedor</h3>
-					</div>
+					</form>
 				</div>
-			}
-
+				<div class="modal-footer">
+					<h3 style="color:white">Escolha seu provedor</h3>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -1407,25 +1456,6 @@
 		window.onclick = function (event) {
 			if (event.target == modal) {
 				modal.style.display = "none";
-			}
-		}
-	</script>
-
-	<!-- ADOBE iframe open | cookie set/get/check -->
-	<script>
-		$(".bookDegust").click(function () {
-			window.open('~/home/bookDegust.html', '_blank');
-		});
-
-		var modal = document.getElementById("myModal");
-		// check Cookie
-		function checkCookie() {
-			if ($("#logado").val() == 1) {
-				modal.style.display = "block";
-				//setTimeout(function () { modal.style.display = "none"; }, 4000);
-			}
-			else {
-				modal.style.display = "block";
 			}
 		}
 	</script>
