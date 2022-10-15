@@ -873,7 +873,7 @@
 													<li class="col-sm-6">
 														<!--Item-->
 														<div class="item mindmap">
-															<a href="#" onclick="checkCookie();" class="mindMaps">
+															<a asp-controller="Home" asp-action="MindMaps" class="mindMaps">
 																<div class="desc">
 																	<h5 class="proj-desc">
 																		Mapas Mentais
@@ -918,7 +918,7 @@
 													<li class="col-sm-6">
 														<!--Item-->
 														<div class="item all figure">
-															<a href="#" onclick="checkCookie();" class="logics">
+															<a href="#" onclick="" class="logics">
 																<div class="desc">
 																	<h5 class="proj-desc">
 																		Resumo da Lógica
@@ -1317,9 +1317,9 @@
 			@if (User?.Identity?.IsAuthenticated ?? false)
 			{
 				@* foreach (var claim in Context.User.Claims)
-				{
+					{
 					<h1>@claim.Type<span> - </span>@claim.Value</h1>
-				} *@
+					} *@
 				@Html.Hidden("logado", 1)
 				;
 				<!-- Modal content true-->
@@ -1415,7 +1415,7 @@
 	<script>
 		$(".bookDegust").click(function () {
 			window.open('~/home/bookDegust.cshtml', '_blank');
-			});
+		});
 
 		var modal = document.getElementById("myModal");
 		// check Cookie

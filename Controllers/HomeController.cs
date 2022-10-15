@@ -7,7 +7,7 @@ namespace DoctorCeo.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-        
+
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
@@ -59,7 +59,7 @@ public class HomeController : Controller
                 }
             }
             var result = UpsertTableEntity(name, email, nameId, provider, utcDate);
-            Console.WriteLine("provider: ", provider + nameId + " nome: " + name + " email: " + email+"date: ",utcDate);
+            Console.WriteLine("provider: ", provider + nameId + " nome: " + name + " email: " + email + "date: ", utcDate);
             return View();
         }
         else
@@ -69,6 +69,11 @@ public class HomeController : Controller
         }
     }
 
+   
+    public IActionResult MindMaps()
+    {
+        return View("mindMaps");
+    }
     public async Task<string> UpsertTableEntity(string name, string email, string nameId, string provider, string utcDate)
     {
         string message = string.Empty;
@@ -81,7 +86,7 @@ public class HomeController : Controller
             Email = email,
             NameId = nameId,
             SigninProvider = provider,
-            LastSigninDate = utcDate,            
+            LastSigninDate = utcDate,
         };
         Azure.Response response = await tableClient.UpsertEntityAsync(sitevisitor);
         // tableClient.UpdateEntity(sitevisitor, Azure.ETag.All, TableUpdateMode.Replace);
@@ -133,7 +138,7 @@ public class HomeController : Controller
         entity["SigninProvider"] = model.SigninProvider;
         entity["Etag"] = model.ETag;
 
-         //_tableClient.UpsertEntity(entity);
+        //_tableClient.UpsertEntity(entity);
     }
     public IActionResult Privacy()
     {

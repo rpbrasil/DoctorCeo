@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yJR1UBnOrKVzcnNal7HMakEoDMT6A8hANcMvlzjmrCU=",
+  "Hash": "8A7Lh9dME7/Ly7Y6Q0PJuoy+q4TwrTcgYHqCeGQkZ8k=",
   "Source": "DoctorCeo",
   "BasePath": "_content/DoctorCeo",
   "Mode": "Default",
@@ -1190,23 +1190,6 @@
       "OriginalItemSpec": "wwwroot\\img\\wsite\\capaV1.jpg"
     },
     {
-      "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\diagramas.pdf",
-      "SourceId": "DoctorCeo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\",
-      "BasePath": "_content/DoctorCeo",
-      "RelativePath": "img/wsite/diagramas.pdf",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\wsite\\diagramas.pdf"
-    },
-    {
       "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\eyeIcon.ico",
       "SourceId": "DoctorCeo",
       "SourceType": "Discovered",
@@ -1222,23 +1205,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\wsite\\eyeIcon.ico"
-    },
-    {
-      "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\figuras.pdf",
-      "SourceId": "DoctorCeo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\",
-      "BasePath": "_content/DoctorCeo",
-      "RelativePath": "img/wsite/figuras.pdf",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\wsite\\figuras.pdf"
     },
     {
       "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\foto1.PNG",
@@ -1426,23 +1392,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\wsite\\logics.PNG"
-    },
-    {
-      "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\mindMaps.pdf",
-      "SourceId": "DoctorCeo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\",
-      "BasePath": "_content/DoctorCeo",
-      "RelativePath": "img/wsite/mindMaps.pdf",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\wsite\\mindMaps.pdf"
     },
     {
       "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\mindMaps2.png",
