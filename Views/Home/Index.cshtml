@@ -172,7 +172,7 @@
 								<img alt="Ver o livro por dentro."
 									src="https://m.media-amazon.com/images/G/32/digital/sitb/sticker/sitb-sticker-v3-xsmall.png"
 									class="litb-on-click" id="ebooksSitbLogoImg" />
-								<a href="/html/bookDegust.html" target="_blank" class="bookDeg">
+								<a asp-controller="Home" asp-action="BookDegust" class="bookDeg">
 									<img src="img/wsite/olhoClinicoImpresso.jpeg" alt="" /></a>
 								<div class="name-profile t-center">
 									<a href="img/wsite/AVISO_DE_PRIVACIDADE.pdf" target="_blank">
@@ -1005,7 +1005,7 @@
 														<img alt="Ver o livro por dentro."
 															src="https://m.media-amazon.com/images/G/32/digital/sitb/sticker/sitb-sticker-v3-xsmall.png"
 															class="litb-on-click" id="ebooksSitbLogoImg2" />
-														<a href="/html/bookDegust.html" target="_blank"
+														<a asp-controller="Home" asp-action="BookDegust"
 															class="bookDeg"><img alt=""
 																src="img/wsite/olhoClinicoVertical2.jpeg" /></a>
 													</div>
@@ -1423,16 +1423,7 @@
 			if ($("#logado").val() == 1) {
 				modal.style.display = "block";
 				//setTimeout(function () { modal.style.display = "none"; }, 4000);
-				@* $(".mindMaps").click(function () {
-					window.open('https://www.doctorceo.online/CONCEALED/mindMaps.html', '_blank');
-				}); *@
-				@* $(".figures").click(function () {
-					window.open('https://www.doctorceo.online/CONCEALED/figures.html', '_blank');
-				});
-				$(".logics").click(function () {
-					window.open('https://www.doctorceo.online/CONCEALED/logics.html', '_blank');
-				}); *@
-			}
+				
 			else {
 				modal.style.display = "block";
 			}

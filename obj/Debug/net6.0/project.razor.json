@@ -16361,6 +16361,11 @@
       "FilePath": "c:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\Views\\Home\\logics.cshtml",
+      "TargetPath": "Views\\Home\\logics.cshtml",
+      "FileKind": "mvc"
     }
   ],
   "SerializationFormat": "0.2"
