@@ -82,9 +82,10 @@ public class HomeController : Controller
     {
         return View("bookDegust");
     }
+    
     public IActionResult Exercises()
     {
-        return View("exercises");
+        return Redirect("https://www.amazon.com.br/Blocos-Adesivas-Post-Reposicionavel-Multicor/dp/B0778QH6WM");
     }
     public IActionResult Logics()
     {
