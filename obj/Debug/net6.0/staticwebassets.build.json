@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8A7Lh9dME7/Ly7Y6Q0PJuoy+q4TwrTcgYHqCeGQkZ8k=",
+  "Hash": "Boo06cNWwFhWjvMh4tsPa3cSQDAjA9hsiqfOuEbbmP0=",
   "Source": "DoctorCeo",
   "BasePath": "_content/DoctorCeo",
   "Mode": "Default",
@@ -1139,6 +1139,23 @@
       "OriginalItemSpec": "wwwroot\\img\\wsite\\AVISO_DE_PRIVACIDADE.pdf"
     },
     {
+      "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\bookDegust.pdf",
+      "SourceId": "DoctorCeo",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\",
+      "BasePath": "_content/DoctorCeo",
+      "RelativePath": "img/wsite/bookDegust.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\wsite\\bookDegust.pdf"
+    },
+    {
       "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\cadernoExerc.png",
       "SourceId": "DoctorCeo",
       "SourceType": "Discovered",
@@ -1205,6 +1222,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\wsite\\eyeIcon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\figures.pdf",
+      "SourceId": "DoctorCeo",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\",
+      "BasePath": "_content/DoctorCeo",
+      "RelativePath": "img/wsite/figures.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\wsite\\figures.pdf"
     },
     {
       "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\foto1.PNG",
@@ -1343,23 +1377,6 @@
       "OriginalItemSpec": "wwwroot\\img\\wsite\\livroImpressoNbckg.jpg"
     },
     {
-      "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\livroPortDegust.pdf",
-      "SourceId": "DoctorCeo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\",
-      "BasePath": "_content/DoctorCeo",
-      "RelativePath": "img/wsite/livroPortDegust.pdf",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\wsite\\livroPortDegust.pdf"
-    },
-    {
       "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\livroVertical.jpeg",
       "SourceId": "DoctorCeo",
       "SourceType": "Discovered",
@@ -1377,6 +1394,23 @@
       "OriginalItemSpec": "wwwroot\\img\\wsite\\livroVertical.jpeg"
     },
     {
+      "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\logics.pdf",
+      "SourceId": "DoctorCeo",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\",
+      "BasePath": "_content/DoctorCeo",
+      "RelativePath": "img/wsite/logics.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\wsite\\logics.pdf"
+    },
+    {
       "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\logics.PNG",
       "SourceId": "DoctorCeo",
       "SourceType": "Discovered",
@@ -1392,6 +1426,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\wsite\\logics.PNG"
+    },
+    {
+      "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\mindMaps.pdf",
+      "SourceId": "DoctorCeo",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\",
+      "BasePath": "_content/DoctorCeo",
+      "RelativePath": "img/wsite/mindMaps.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\wsite\\mindMaps.pdf"
     },
     {
       "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\mindMaps2.png",
