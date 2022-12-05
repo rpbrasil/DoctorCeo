@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ES2iHazFFHCKS6ssN4n94LyFfpxnVx6B70XjvT8TRmU=",
+  "Hash": "IzYa8++mHYQQ3S3p6Lx00V8QAP1WzoMEEqG+ERbw4Mg=",
   "Source": "DoctorCeo",
   "BasePath": "_content/DoctorCeo",
   "Mode": "Default",
@@ -1156,6 +1156,23 @@
       "OriginalItemSpec": "wwwroot\\img\\wsite\\bookDegust.pdf"
     },
     {
+      "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\bookDegust2.pdf",
+      "SourceId": "DoctorCeo",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\",
+      "BasePath": "_content/DoctorCeo",
+      "RelativePath": "img/wsite/bookDegust2.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\wsite\\bookDegust2.pdf"
+    },
+    {
       "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\cadernoExerc.png",
       "SourceId": "DoctorCeo",
       "SourceType": "Discovered",
@@ -1545,6 +1562,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\wsite\\signature.PNG"
+    },
+    {
+      "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\img\\wsite\\Termo_cessao_direitos_autorais.pdf",
+      "SourceId": "DoctorCeo",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\",
+      "BasePath": "_content/DoctorCeo",
+      "RelativePath": "img/wsite/Termo_cessao_direitos_autorais.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\wsite\\Termo_cessao_direitos_autorais.pdf"
     },
     {
       "Identity": "C:\\Users\\rpbrasil\\Local_Repos\\DoctorCeo\\wwwroot\\js\\instafeed.min.js",
